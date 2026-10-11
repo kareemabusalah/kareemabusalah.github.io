@@ -38,6 +38,7 @@ document.querySelectorAll('.v3d').forEach(box => {
 
   loader.load(box.dataset.src, gltf => {
     const model = gltf.scene;
+    if ('zup' in box.dataset) model.rotation.x = -Math.PI / 2;  // Onshape/STEP exports are Z-up
     model.traverse(o => {
       if (!o.isMesh) return;
       o.geometry.computeVertexNormals();
@@ -47,7 +48,7 @@ document.querySelectorAll('.v3d').forEach(box => {
     const b = new THREE.Box3().setFromObject(model), c = b.getCenter(new THREE.Vector3()), r = b.getSize(new THREE.Vector3()).length() / 2;
     model.position.sub(c);
     scene.add(model);
-    camera.position.set(r * 1.6, r * 1.1, r * 1.8);
+    camera.position.set(r * 1.15, r * 0.85, r * 1.3);
     camera.near = r / 100; camera.far = r * 100; camera.updateProjectionMatrix();
     box.classList.add('ready');
   }, undefined, () => box.querySelector('.vload').textContent = 'MODEL FAILED TO LOAD');

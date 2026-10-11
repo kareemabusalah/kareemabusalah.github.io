@@ -3,9 +3,10 @@
 /* Letter Glitch canvas, sits behind .hero > .wrap (z-index 1, set by the page) */
 .fx-glitch-bg{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;display:block}
 
-/* Click Spark + Pixel Trail share one fixed canvas; Pixel Transition gets its own on top */
+/* Click Spark + Pixel Trail share one fixed canvas behind the page content; Pixel Transition gets its own on top */
 .fx-sparks,.fx-cover{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;display:block}
-.fx-sparks{z-index:2147483646}
+.fx-sparks{z-index:0}
+main,footer{position:relative;z-index:1}
 .fx-cover{z-index:2147483647}
 
 /* Pre-paint cover so a page reached via Pixel Transition never flashes before fx.js runs.
@@ -29,29 +30,6 @@
 
 /* Magnet: uses the individual `translate` property so it stacks with any page transform */
 .fx-mag{translate:var(--mx,0px) var(--my,0px);transition:translate .25s cubic-bezier(.2,.8,.2,1)}
-
-/* Glitch Text: two copies (--g and --dim) sliced with clip-path, ~300 ms on hover, then gone */
-@media (prefers-reduced-motion:no-preference){
-  [data-glitch]{position:relative}
-  [data-glitch]:hover::before,[data-glitch]:hover::after{
-    content:attr(data-glitch);content:attr(data-glitch) / "";
-    position:absolute;inset:0;padding:inherit;box-sizing:border-box;text-align:inherit;white-space:inherit;
-    pointer-events:none;background:none;clip-path:inset(0 0 100% 0);animation:fx-gl .3s steps(1,end) 1}
-  [data-glitch]:hover::before{color:var(--g,#39ff6a);animation-name:fx-gl1}
-  [data-glitch]:hover::after{color:var(--dim,#1f7a3a);animation-name:fx-gl2}
-}
-@keyframes fx-gl1{
-  0%{clip-path:inset(10% 0 60% 0);transform:translate(-2px,0)}
-  25%{clip-path:inset(55% 0 20% 0);transform:translate(2px,0)}
-  50%{clip-path:inset(30% 0 45% 0);transform:translate(-3px,0)}
-  75%{clip-path:inset(75% 0 5% 0);transform:translate(1px,0)}
-  100%{clip-path:inset(0 0 100% 0);transform:none}}
-@keyframes fx-gl2{
-  0%{clip-path:inset(65% 0 10% 0);transform:translate(2px,0)}
-  25%{clip-path:inset(5% 0 70% 0);transform:translate(-2px,0)}
-  50%{clip-path:inset(45% 0 30% 0);transform:translate(3px,0)}
-  75%{clip-path:inset(20% 0 60% 0);transform:translate(-1px,0)}
-  100%{clip-path:inset(0 0 100% 0);transform:none}}
 
 /* Konami 1UP toast + green flicker */
 .fx-1up{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2147483645;pointer-events:none;

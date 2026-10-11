@@ -7,29 +7,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="fx.css"></head><body>
-<nav class="tabs"><div class="wrap"><a class="me" href="index.html">KAREEM.EXE</a><a class="t" href="index.html" data-glitch="home">home</a><a class="t" href="work.html" data-glitch="work">work</a><a class="t" href="lab.html" data-glitch="lab" aria-current=page>lab</a><a class="t" href="about.html" data-glitch="about">about</a><a class="t" href="resume.html" data-glitch="resume">resume</a><a class="t" href="sokaj.html" data-glitch="sokaj">sokaj</a><a class="t" href="lampshade.html" data-glitch="lampshade">lampshade</a><a class="t" href="contact.html" data-glitch="contact">contact</a></div></nav>
+<nav class="tabs"><div class="wrap"><a class="me" href="index.html">KAREEM.EXE</a><a class="t" href="index.html">home</a><a class="t" href="work.html">work</a><a class="t" href="lab.html" aria-current=page>lab</a><a class="t" href="about.html">about</a><a class="t" href="resume.html">resume</a><a class="t" href="music.html">music</a><a class="t" href="contact.html">contact</a></div></nav>
 <main><section><div class="wrap">
-  <div class="phd"><span class="sheet">STAGE 3-8</span><h2 class="title" data-glitch="THE LAB">THE LAB</h2><p>Two things you can play with: the beam trade behind the solar sail frame, and a pocket version of Plantogachi running the app's real game loop.</p></div>
-  <div class="lab rv" id="trade">
-    <h3>01 · SOLAR SAIL BEAM TRADE</h3>
-    <p style="margin-bottom:20px">Each frame edge is a 0.5 m CFRP tube. It has to clear a flexural-rigidity floor of EI &ge; 3.8 N·m², and every gram costs sail thrust. I swept seven diameter and wall pairs and picked 8.0 &times; 0.15 mm. Run the same trade.</p>
-    <div class="trade">
-      <div>
-        <label>OUTER DIAMETER: <output id="odv"></output> mm<input type="range" id="od" min="5" max="12" step="0.1" value="8"></label>
-        <label>WALL THICKNESS: <output id="wtv"></output> mm<input type="range" id="wt" min="0.1" max="0.5" step="0.01" value="0.15"></label>
-        <p class="small">Thin-walled tube, E = 230 GPa, &rho; = 1600 kg/m³: the laminate values that reproduce the design point. Stiffness grows with diameter to the fourth power and mass only with the square, so a wide, thin tube wins until the wall gets too thin to roll-wrap or starts to buckle locally. <a href="work/duke-solar-sail.html">Full case study &rarr;</a></p>
-      </div>
-      <div class="ro">
-        <div class="small">FLEXURAL RIGIDITY EI</div><div class="big"><span id="ei"></span> N·m²</div>
-        <div class="meter"><i id="bar"></i><s style="left:50%"></s></div>
-        <div class="small">White line = 3.8 N·m² floor</div>
-        <div class="verdict" id="verdict"></div>
-        <div class="small" style="margin-top:16px">MASS PER BEAM</div><div class="big"><span id="g"></span> g</div>
-      </div>
-    </div>
-  </div>
+  <div class="phd"><span class="sheet">STAGE 3-7</span><h2 class="title">THE LAB</h2><p>A pocket version of Plantogachi, running the app's real game loop.</p></div>
   <div class="lab rv" id="plantogachi">
-    <h3>02 · PLANTOGACHI, POCKET EDITION</h3>
+    <h3>PLANTOGACHI, POCKET EDITION</h3>
     <p style="margin-bottom:20px">Plantogachi turns a houseplant into a Tamagotchi. This is the app's real game loop, ported from the FastAPI backend: the same reading-to-stats formulas, mood resolver, decay, and XP. The sliders stand in for the ESP32 sensor puck, like the DEV slider in the real app. <a href="work/plantogachi.html">Case study &rarr;</a></p>
     <div class="tama" id="tama">
       <div class="gb"><div class="lcd">
