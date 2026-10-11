@@ -8,11 +8,11 @@ document.querySelectorAll('.v3d').forEach(box => {
   const canvas = box.querySelector('canvas');
   const renderer = new THREE.WebGLRenderer({canvas, antialias: false});
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x050805);
+  scene.background = new THREE.Color(0x05040f);
   const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 1e6);
   const controls = new OrbitControls(camera, canvas);
   controls.enableDamping = true;
-  controls.autoRotate = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+  controls.autoRotate = !(window.KAS_CALM ?? matchMedia('(prefers-reduced-motion: reduce)').matches);
   controls.autoRotateSpeed = 1.2;
   canvas.addEventListener('pointerdown', () => controls.autoRotate = false, {once: true});
   scene.add(new THREE.HemisphereLight(0xeaffea, 0x0a200a, 2.2));
@@ -43,7 +43,7 @@ document.querySelectorAll('.v3d').forEach(box => {
       if (!o.isMesh) return;
       o.geometry.computeVertexNormals();
       o.material.flatShading = true;
-      o.add(new THREE.LineSegments(new THREE.EdgesGeometry(o.geometry, 25), new THREE.LineBasicMaterial({color: 0x39ff6a})));
+      o.add(new THREE.LineSegments(new THREE.EdgesGeometry(o.geometry, 25), new THREE.LineBasicMaterial({color: 0x7ee8ff})));
     });
     const b = new THREE.Box3().setFromObject(model), c = b.getCenter(new THREE.Vector3()), r = b.getSize(new THREE.Vector3()).length() / 2;
     model.position.sub(c);

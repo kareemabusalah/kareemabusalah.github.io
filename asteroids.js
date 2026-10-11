@@ -26,7 +26,7 @@
 
   // ---------- constants ----------
   const W = 400, H = 250, DT = 1 / 60, TAU = Math.PI * 2;
-  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const RM = window.KAS_CALM ?? matchMedia('(prefers-reduced-motion: reduce)').matches;
   const AUTO = /[?&]autoplay\b/.test(location.search); // test hook only
   const TOUCH = matchMedia('(any-pointer: coarse)').matches;
   const HI_KEY = 'kas_asteroids_hi';
@@ -241,42 +241,42 @@
   }
 
   const css = `
-.ast-wrap{position:relative;width:100%;max-width:calc(70vh * 1.6);aspect-ratio:16/10;margin:0 auto;background:#04050d;border:2px solid #2e8a55;box-shadow:0 0 0 2px #04050d,0 0 24px rgba(57,255,106,.15);overflow:hidden;font-family:VT323,monospace;color:#d4e4ff;user-select:none;-webkit-user-select:none;box-sizing:border-box}
+.ast-wrap{position:relative;width:100%;max-width:calc(70vh * 1.6);aspect-ratio:16/10;margin:0 auto;background:#05040f;border:2px solid #5b54a8;box-shadow:0 0 0 2px #05040f,0 0 24px rgba(126,232,255,.15);overflow:hidden;font-family:VT323,monospace;color:#d4e4ff;user-select:none;-webkit-user-select:none;box-sizing:border-box}
 .ast-wrap *{box-sizing:border-box}
 .ast-cv{position:absolute;inset:0;width:100%;height:100%;display:block;image-rendering:crisp-edges;image-rendering:pixelated}
 .ast-hud{position:absolute;left:0;right:0;top:0;z-index:3;display:flex;flex-wrap:wrap;gap:.4em 1.4em;align-items:center;padding:7px 9px 14px;font:clamp(7px,1.05vw,11px)/1.4 "Press Start 2P",monospace;background:linear-gradient(rgba(4,5,13,.85),rgba(4,5,13,0));pointer-events:none}
-.ast-hud b{color:#39ff6a;font-weight:normal}
+.ast-hud b{color:#7ee8ff;font-weight:normal}
 .ast-lives img{width:1.3em;height:1.5em;image-rendering:pixelated;vertical-align:middle;margin-right:2px}
-.ast-snd{pointer-events:auto;margin-left:auto;font:inherit;color:#d4e4ff;background:#0a0e1f;border:2px solid #2e8a55;padding:.35em .6em;cursor:pointer}
-.ast-snd[aria-pressed=true]{color:#04050d;background:#39ff6a}
+.ast-snd{pointer-events:auto;margin-left:auto;font:inherit;color:#d4e4ff;background:#0d0b24;border:2px solid #5b54a8;padding:.35em .6em;cursor:pointer}
+.ast-snd[aria-pressed=true]{color:#05040f;background:#7ee8ff}
 .ast-snd:focus-visible,.ast-btn:focus-visible,.ast-wrap a:focus-visible{outline:3px solid #ffd23f;outline-offset:2px}
 .ast-fxbar{position:absolute;left:9px;bottom:8px;z-index:3;font:clamp(7px,1vw,10px) "Press Start 2P",monospace;color:#ffd23f;pointer-events:none}
 .ast-ov{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7em;text-align:center;padding:42px 6% 4%;background:rgba(4,5,13,.66);overflow:auto}
 .ast-ov[hidden],.ast-touch[hidden]{display:none}
-.ast-ov h2{margin:0;font:clamp(11px,2.3vw,22px)/1.5 "Press Start 2P",monospace;color:#39ff6a;text-shadow:3px 3px 0 #0a0e1f,0 0 14px rgba(57,255,106,.35)}
+.ast-ov h2{margin:0;font:clamp(11px,2.3vw,22px)/1.5 "Press Start 2P",monospace;color:#7ee8ff;text-shadow:3px 3px 0 #0d0b24,0 0 14px rgba(126,232,255,.35)}
 .ast-ov h3{margin:.3em 0 0;font:clamp(8px,1.1vw,11px) "Press Start 2P",monospace;color:#ffd23f}
 .ast-ov p{margin:0;max-width:44em;font-size:clamp(16px,2vw,23px);line-height:1.15}
 .ast-keys{color:#9fb0d8}.ast-keys kbd{font:inherit;color:#ffd23f}
-.ast-btn{font:clamp(9px,1.25vw,13px)/1.4 "Press Start 2P",monospace;color:#04050d;background:#39ff6a;border:0;padding:.9em 1.4em;box-shadow:4px 4px 0 #2e8a55;cursor:pointer}
+.ast-btn{font:clamp(9px,1.25vw,13px)/1.4 "Press Start 2P",monospace;color:#05040f;background:#7ee8ff;border:0;padding:.9em 1.4em;box-shadow:4px 4px 0 #5b54a8;cursor:pointer}
 .ast-pulse{animation:ast-pulse 1.1s steps(2) infinite}
 @keyframes ast-pulse{50%{background:#ffd23f;box-shadow:4px 4px 0 #8b5cf6}}
-.ast-log{list-style:none;margin:0;padding:.4em .8em;text-align:left;font-size:clamp(15px,1.8vw,20px);line-height:1.2;background:#0a0e1f;border:2px solid #2e8a55}
-.ast-log a{color:#39ff6a;margin-left:.4em}
+.ast-log{list-style:none;margin:0;padding:.4em .8em;text-align:left;font-size:clamp(15px,1.8vw,20px);line-height:1.2;background:#0d0b24;border:2px solid #5b54a8}
+.ast-log a{color:#7ee8ff;margin-left:.4em}
 .ast-log .ast-unk{color:#5a6a8a}
 .ast-toasts{position:absolute;right:8px;top:34px;z-index:4;width:min(280px,62%);display:flex;flex-direction:column;gap:6px;pointer-events:none}
-.ast-toast{pointer-events:auto;display:flex;gap:8px;align-items:flex-start;background:#0a0e1f;border:2px solid #39ff6a;box-shadow:3px 3px 0 #04050d;padding:6px 8px;font-size:17px;line-height:1.1;transition:opacity .4s,transform .4s}
+.ast-toast{pointer-events:auto;display:flex;gap:8px;align-items:flex-start;background:#0d0b24;border:2px solid #7ee8ff;box-shadow:3px 3px 0 #05040f;padding:6px 8px;font-size:17px;line-height:1.1;transition:opacity .4s,transform .4s}
 .ast-toast.ast-out{opacity:0;transform:translateX(20px)}
-.ast-toast small{display:block;margin-bottom:3px;font:8px/1.3 "Press Start 2P",monospace;color:#39ff6a}
-.ast-toast img{flex:none;width:46px;height:46px;object-fit:cover;border:1px solid #2e8a55}
+.ast-toast small{display:block;margin-bottom:3px;font:8px/1.3 "Press Start 2P",monospace;color:#7ee8ff}
+.ast-toast img{flex:none;width:46px;height:46px;object-fit:cover;border:1px solid #5b54a8}
 .ast-toast .ast-m{color:#ffd23f;font-size:20px}
-.ast-toast a{display:inline-block;margin-top:4px;font:8px "Press Start 2P",monospace;color:#39ff6a}
+.ast-toast a{display:inline-block;margin-top:4px;font:8px "Press Start 2P",monospace;color:#7ee8ff}
 .ast-toast.ast-skill{border-color:#8b5cf6}.ast-toast.ast-skill small{color:#b79bff}
 .ast-toast.ast-band{border-color:#ffd23f}.ast-toast.ast-band small{color:#ffd23f}
 .ast-touch{position:absolute;left:0;right:0;bottom:8px;z-index:3;display:flex;justify-content:space-between;padding:0 8px;pointer-events:none}
 .ast-touch div{display:flex;gap:8px}
-.ast-touch button{pointer-events:auto;touch-action:none;width:clamp(44px,12vw,64px);height:clamp(44px,12vw,64px);font:20px/1 "Press Start 2P",monospace,sans-serif;color:#d4e4ff;background:rgba(10,14,31,.7);border:2px solid #2e8a55;border-radius:0;-webkit-tap-highlight-color:transparent}
+.ast-touch button{pointer-events:auto;touch-action:none;width:clamp(44px,12vw,64px);height:clamp(44px,12vw,64px);font:20px/1 "Press Start 2P",monospace,sans-serif;color:#d4e4ff;background:rgba(10,14,31,.7);border:2px solid #5b54a8;border-radius:0;-webkit-tap-highlight-color:transparent}
 .ast-touch button.ast-fire{font-size:10px}
-.ast-touch button.on{background:#2e8a55;color:#04050d}
+.ast-touch button.on{background:#5b54a8;color:#05040f}
 @media (prefers-reduced-motion:reduce){.ast-pulse{animation:none}.ast-toast{transition:none}}`;
   if (!document.getElementById('ast-style')) document.head.append(h('style', { id: 'ast-style' }, css));
 
@@ -625,14 +625,14 @@
   }
 
   function render() {
-    g.fillStyle = '#04050d';
+    g.fillStyle = '#05040f';
     g.fillRect(0, 0, W, H);
     g.save();
     if (shakeT > 0 && !RM) g.translate(Math.round(rand(-2, 2)), Math.round(rand(-2, 2)));
     for (const s of stars) { g.fillStyle = s.c; g.fillRect(s.x | 0, s.y | 0, s.z > 0.5 ? 2 : 1, s.z > 0.5 ? 2 : 1); }
 
     for (const r of rocks) drawRot(r.img, r.x, r.y, r.a);
-    for (const r of rocks) if (r.tier === 0) { const n = PROJ[r.pi].n; text(n, Math.round(r.x - textW(n) / 2), Math.round(r.y - r.r - 9), '#39ff6a'); }
+    for (const r of rocks) if (r.tier === 0) { const n = PROJ[r.pi].n; text(n, Math.round(r.x - textW(n) / 2), Math.round(r.y - r.r - 9), '#7ee8ff'); }
 
     for (const p of pows) {
       if (p.l < 3 && (p.l * 8 | 0) % 2) continue;
@@ -647,7 +647,7 @@
     }
     for (const n of notes) drawRot(NOTE, n.x, n.y);
 
-    g.fillStyle = '#39ff6a';
+    g.fillStyle = '#7ee8ff';
     for (const b of bullets) g.fillRect(Math.round(b.x) - 1, Math.round(b.y) - 1, 2, 2);
 
     if (ship && ship.alive && (ship.inv <= 0 || (ship.inv * 10 | 0) % 2 === 0) && state !== 'start') {
@@ -662,7 +662,7 @@
       g.drawImage(SHIP, -7, -6);
       g.restore();
       if (fx.shield > 0 && (fx.shield > 1.5 || (fx.shield * 8 | 0) % 2)) {
-        g.fillStyle = '#39ff6a';
+        g.fillStyle = '#7ee8ff';
         for (let i = 0; i < 28; i++) { const a = i / 28 * TAU; g.fillRect(Math.round(ship.x + Math.cos(a) * 9), Math.round(ship.y + Math.sin(a) * 9), 1, 1); }
       }
     }
