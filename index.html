@@ -5,87 +5,123 @@
 <meta property="og:title" content="Kareem Abu Salah · Hardware Engineering Portfolio">
 <meta property="og:image" content="assets/sail_iso.png">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&family=Newsreader:opsz@6..72&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--ink:#14181d;--mut:#5b6572;--faint:#94a0ad;--line:#d9dee4;--band:#f5f6f8;--acc:#2f6fdf}
-html{scroll-behavior:smooth}
-body{font-family:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;color:var(--ink);line-height:1.6;font-size:16px}
-.eyebrow,h2.sec,.cn,.dn,.mv,.cm b,.tags,.dtext h3,.big,output,.small{font-family:"IBM Plex Mono",ui-monospace,monospace}
-h1,.ct,.dlg h2,.headline{letter-spacing:-.02em}
-a{color:var(--acc)}
-.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
-nav{position:sticky;top:0;z-index:5;background:#fffe;backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;gap:22px;align-items:center;height:54px;font-size:14px}
-nav b{margin-right:auto}
-nav a{color:var(--mut);text-decoration:none}nav a:hover{color:var(--ink)}
-header.hero{background:var(--ink);color:#fff;padding:90px 0 70px}
-.eyebrow{font-size:12px;letter-spacing:.35em;color:#aeb7c2;font-weight:600}
-h1{font-size:clamp(38px,7vw,64px);line-height:1.05;margin:10px 0 18px;letter-spacing:-1px}
-.hero p{max-width:720px;color:#d5dbe2}
-.links{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px}
-.links a{color:#fff;border:1px solid #ffffff55;padding:8px 16px;border-radius:4px;text-decoration:none;font-size:14px}
-.links a:hover{background:#ffffff18}
-.edu{font-size:14px;color:#aeb7c2;margin-top:18px}
-section{padding:70px 0}
-h2.sec{font-size:13px;letter-spacing:.3em;color:var(--faint);margin-bottom:24px;border-bottom:1px solid var(--line);padding-bottom:8px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:22px}
-.card{all:unset;cursor:pointer;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:6px;overflow:hidden;
-  background:#fff;transition:transform .15s,box-shadow .15s;position:relative}
-.card:hover,.card:focus-visible{transform:translateY(-3px);box-shadow:0 10px 28px #14181d1f}
-.card:focus-visible{outline:2px solid var(--acc)}
-.card img{width:100%;height:210px;object-fit:contain;background:var(--band);border-bottom:1px solid var(--line)}
-.cn{position:absolute;top:10px;left:12px;font-weight:800;font-size:13px;background:var(--ink);color:#fff;padding:2px 8px;border-radius:3px}
-.ct{font-weight:800;font-size:20px;padding:16px 18px 0}
-.cs{color:var(--mut);font-size:14px;padding:0 18px}
-.cm{padding:12px 18px 0;font-size:14px;color:var(--mut)}.cm b{color:var(--ink);font-size:18px}
-.tags{padding:12px 18px 18px;font-size:11px;letter-spacing:.12em;color:var(--faint);font-weight:700;margin-top:auto}
-dialog{border:0;border-radius:8px;width:min(1100px,94vw);max-height:92vh;padding:0;margin:auto}
-dialog::backdrop{background:#14181dcc}
+:root{--bp:#1d4ed8;--bp2:#1943bd;--ink:#0f2a7a;--mut:#4a5f9e;--pale:#c9d6ff;--lw:#ffffff3d;--paper:#fff;--tint:#eef2ff;--line:#cdd8f6}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:"IBM Plex Sans",Arial,sans-serif;color:#fff;line-height:1.6;font-size:16px;background:var(--bp);
+  background-image:linear-gradient(#ffffff0f 1px,transparent 1px),linear-gradient(90deg,#ffffff0f 1px,transparent 1px),
+    linear-gradient(#ffffff1c 1px,transparent 1px),linear-gradient(90deg,#ffffff1c 1px,transparent 1px);
+  background-size:20px 20px,20px 20px,100px 100px,100px 100px}
+.mono,.eyebrow,.sheet,.tbn,.cm b,.tags,.dn,.mv,.dtext h3,.big,output,.small,.stats b,nav a{font-family:"IBM Plex Mono",ui-monospace,monospace}
+.serif,h1,h2.title,.ct,.dlg h2,.int h3{font-family:"Newsreader",Georgia,serif;font-weight:400;letter-spacing:-.01em}
+a{color:#fff}
+.wrap{max-width:1140px;margin:0 auto;padding:0 28px}
+/* transit-line nav: one dot per sheet, the current one fills */
+nav{position:sticky;top:0;z-index:5;background:#1d4ed8e6;backdrop-filter:blur(6px);border-bottom:1px solid var(--lw)}
+nav .wrap{display:flex;justify-content:space-between;position:relative;height:66px;align-items:center}
+nav .wrap::before{content:"";position:absolute;left:40px;right:40px;top:24px;height:1px;background:var(--lw)}
+nav a{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:11px;letter-spacing:.08em;color:var(--pale);text-decoration:none;padding-top:6px}
+nav a::before{content:"";width:13px;height:13px;border-radius:50%;border:1.5px solid var(--pale);background:var(--bp);transition:.2s}
+nav a.on{color:#fff}nav a.on::before{background:#fff;border-color:#fff;box-shadow:0 0 0 4px #ffffff33}
+nav a:hover{color:#fff}
+/* hero */
+header.hero{padding:96px 0 72px;position:relative;overflow:hidden;--mx:50%;--my:40%}
+header.hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(#ffffff55 1px,transparent 1px),linear-gradient(90deg,#ffffff55 1px,transparent 1px);background-size:20px 20px;
+  -webkit-mask:radial-gradient(220px at var(--mx) var(--my),#000,transparent);mask:radial-gradient(220px at var(--mx) var(--my),#000,transparent)}
+header.hero .wrap{position:relative;z-index:1}
+.eyebrow{font-size:12px;letter-spacing:.3em;color:var(--pale)}
+h1{font-size:clamp(52px,9vw,104px);line-height:.95;margin:14px 0 22px}
+.headline{font-size:clamp(20px,2.6vw,27px);line-height:1.35;margin-bottom:18px;max-width:780px}
+.hero p{max-width:740px;color:#e3e9ff}
+.edu{font-size:14px;color:var(--pale);margin-top:18px}
+.links{margin-top:26px;display:flex;flex-wrap:wrap;gap:12px}
+.links a{color:#fff;border:1.5px solid #fff;padding:8px 16px;text-decoration:none;font-size:14px;font-family:"IBM Plex Mono",monospace;transition:.15s}
+.links a:hover{background:#fff;color:var(--bp)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:52px;border:1.5px solid #fff}
+.stats div{font-size:13px;color:var(--pale);padding:16px 18px;border-left:1px solid var(--lw)}.stats div:first-child{border:0}
+.stats b{display:block;font-weight:600;font-size:clamp(30px,4vw,44px);line-height:1.1;color:#fff}
+/* sections read as sheets of a drawing set */
+section{padding:84px 0;border-top:1px solid var(--lw)}
+.shead{display:grid;grid-template-columns:240px 1fr;gap:36px;margin-bottom:34px;align-items:end}
+.sheet{font-size:11px;letter-spacing:.2em;color:var(--pale);display:block;margin-bottom:6px}
+h2.title{font-size:clamp(40px,5vw,58px);line-height:1}
+.shead p{color:#e3e9ff;max-width:640px}
+/* project cards: white paper with a drawing title block */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px}
+.card{all:unset;cursor:pointer;display:flex;flex-direction:column;background:var(--paper);color:var(--ink);position:relative;
+  border-radius:4px;overflow:hidden;transition:transform .15s,box-shadow .15s;--cx:50%;--cy:50%}
+.card:hover,.card:focus-visible{transform:translateY(-4px);box-shadow:0 14px 34px #0a1f6a66}
+.card:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.card::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .2s;
+  background:radial-gradient(300px at var(--cx) var(--cy),#1d4ed81c,transparent 70%)}
+.card:hover::after{opacity:1}
+.pic{display:block;height:220px;background:var(--tint);padding:12px}
+.pic img{width:100%;height:100%;object-fit:contain}
+.tb{display:flex;flex-direction:column;margin:12px;border:1.5px solid var(--ink);padding:12px 14px;flex:1}
+.tbn{font-size:11px;letter-spacing:.18em;color:var(--mut)}
+.ct{font-size:25px;line-height:1.15;margin-top:4px}
+.cs{color:var(--mut);font-size:14px}
+.cm{margin-top:10px;padding-top:10px;border-top:1px solid var(--line);font-size:14px;color:var(--mut)}.cm b{color:var(--ink);font-size:17px}
+.tags{margin-top:auto;padding-top:10px;font-size:10.5px;letter-spacing:.1em;color:var(--mut)}
+.note{margin-top:28px;padding:14px 18px;border:1px dashed var(--pale);color:#e3e9ff;font-size:15px}
+/* beam trade */
+.trade{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
+.trade label{display:block;font-size:14px;color:var(--pale);margin-bottom:18px}
+.trade input{width:100%;accent-color:#fff}
+.trade output{font-weight:600;color:#fff}
+.ro{border:1.5px solid #fff;padding:22px;background:var(--bp2)}
+.ro .big{font-size:32px;font-weight:600}
+.meter{height:12px;background:#ffffff26;position:relative;margin:8px 0 4px;overflow:hidden}
+.meter i{position:absolute;inset:0 auto 0 0;background:#fff;transition:width .1s}
+.meter s{position:absolute;top:-2px;bottom:-2px;width:2px;background:#ffd23f}
+.verdict{font-weight:600;margin-top:10px}.ok{color:#8dffb0}.bad{color:#ffb4b4}
+.small{font-size:12.5px;color:var(--pale)}
+/* about, skills, interests */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:40px}.cols h3{font-size:17px;margin-bottom:8px}.cols p{color:#e3e9ff}
+.skills{display:grid;grid-template-columns:1fr 1fr;gap:18px 40px;font-size:15px;color:#e3e9ff}
+.skills b{display:block;color:#fff;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-family:"IBM Plex Mono",monospace}
+.ints{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:22px}
+.int{background:var(--paper);color:var(--ink);padding:14px;border-radius:4px}
+.ipic{height:170px;background:var(--tint);display:flex;align-items:center;justify-content:center;color:var(--bp);margin-bottom:12px;overflow:hidden}
+.ipic{aspect-ratio:16/10;height:auto}.ipic img,.ipic iframe{width:100%;height:100%;object-fit:cover;object-position:50% 75%;border:0}.ipic svg{width:70%}
+.int h3{font-size:26px;line-height:1.1;margin:2px 0 6px}.int p{color:var(--mut);font-size:15px}.int a{color:var(--bp);font-weight:600}
+#contact .big{font-size:clamp(24px,3vw,34px)}
+footer{border-top:1px solid var(--lw);padding:26px 0;color:var(--pale);font-size:12px}
+footer .wrap{display:flex;justify-content:space-between}
+/* case-study dialogs: a white sheet over the blueprint */
+dialog{border:0;border-radius:4px;width:min(1100px,94vw);max-height:92vh;padding:0;margin:auto;color:var(--ink)}
+dialog::backdrop{background:#0b1d5ccc}
 .dlg{padding:34px 38px 40px;position:relative}
-.x{position:sticky;top:0;float:right;font-size:30px;line-height:1;background:#fff;border:1px solid var(--line);border-radius:50%;
+.x{position:sticky;top:0;float:right;font-size:30px;line-height:1;background:#fff;border:1.5px solid var(--ink);border-radius:50%;
   width:42px;height:42px;cursor:pointer;color:var(--ink)}
-.dn{font-weight:800;color:var(--faint)}
-.dlg h2{font-size:28px;line-height:1.15}.dlg h2 span{font-weight:400;color:var(--mut);font-size:20px}
+.dn{font-size:12px;letter-spacing:.18em;color:var(--mut)}
+.dlg h2{font-size:38px;line-height:1.1}.dlg h2 span{color:var(--mut);font-size:24px}
 .pmeta{font-size:14px;color:var(--mut);margin:6px 0 18px}
-.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;background:var(--band);padding:16px 18px;border-radius:6px}
-.m{display:flex;flex-direction:column;line-height:1.2}
-.mv{font-size:22px;font-weight:800}.ml{font-size:13px;color:var(--mut)}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));border:1.5px solid var(--ink)}
+.m{display:flex;flex-direction:column;line-height:1.2;padding:14px 16px;border-left:1px solid var(--line)}.m:first-child{border:0}
+.mv{font-size:21px;font-weight:600}.ml{font-size:13px;color:var(--mut)}
 .dbody{display:grid;grid-template-columns:1.25fr 1fr;gap:32px;margin-top:26px}
 .dtext p{margin-bottom:10px}.lede{font-size:17px}
-.dtext h3{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin:20px 0 6px}
+.dtext h3{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--mut);margin:20px 0 6px;font-weight:600}
+.dtext a{color:var(--bp)}
 .dfigs{display:flex;flex-direction:column;gap:16px}
-figure{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--band)}
+figure{border:1px solid var(--line);overflow:hidden;background:var(--tint)}
 figure img{width:100%;display:block}
-figcaption{font-size:13px;color:var(--mut);padding:8px 10px;line-height:1.4}
-.go{font-weight:700}
-.headline{font-size:clamp(20px,2.6vw,26px);color:#fff!important;font-weight:600;line-height:1.35;margin-bottom:16px}
+figcaption{font-size:13px;color:var(--mut);padding:8px 10px;line-height:1.4;background:#fff}
 .pager{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line)}
-.pager button{background:none;border:1px solid var(--line);border-radius:4px;padding:10px 16px;cursor:pointer;font:inherit;font-size:14px;color:var(--ink)}
-.pager button:hover{background:var(--band)}
-.trade{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
-.trade label{display:block;font-size:14px;color:var(--mut);margin-bottom:18px}
-.trade input{width:100%;accent-color:var(--acc)}
-.trade output{font-weight:800;color:var(--ink)}
-.ro{border:1px solid var(--line);border-radius:6px;padding:22px}
-.ro .big{font-size:30px;font-weight:800}
-.meter{height:12px;background:var(--band);border-radius:6px;position:relative;margin:8px 0 4px;overflow:hidden}
-.meter i{position:absolute;inset:0 auto 0 0;background:var(--acc);transition:width .1s}
-.meter s{position:absolute;top:0;bottom:0;width:2px;background:var(--ink)}
-.verdict{font-weight:700;margin-top:10px}.ok{color:#1a7f37}.bad{color:#c62828}
-.small{font-size:13px;color:var(--mut)}
-.skills{display:grid;grid-template-columns:1fr 1fr;gap:16px 36px;font-size:15px;color:var(--mut)}
-.skills b{display:block;color:var(--ink);font-size:13px;letter-spacing:.04em;text-transform:uppercase}
-.note{margin-top:28px;padding:14px 18px;background:var(--band);border-left:3px solid var(--faint);color:var(--mut);font-size:15px}
-.cols{display:grid;grid-template-columns:1fr 1fr;gap:36px}.cols h3{font-size:16px;margin-bottom:8px}
-footer{border-top:1px solid var(--line);padding:30px 0;color:var(--faint);font-size:13px}
-@media(max-width:760px){.dbody,.trade,.skills,.cols{grid-template-columns:1fr}.dlg{padding:22px 18px}nav a.opt{display:none}}
+.pager button{background:none;border:1.5px solid var(--ink);padding:10px 16px;cursor:pointer;font:inherit;font-size:14px;color:var(--ink)}
+.pager button:hover{background:var(--ink);color:#fff}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}.reveal.in{opacity:1;transform:none}
+@media(max-width:760px){.dbody,.trade,.skills,.cols,.shead{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}
+  .stats div:nth-child(3){border-left:0}.dlg{padding:22px 18px}nav a{font-size:0;gap:0}nav .wrap::before{left:34px;right:34px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style></head><body>
-<nav><div class="wrap"><b>Kareem Abu Salah</b><a href="#work">Work</a><a href="#trade" class="opt">Try it</a>
-  <a href="#about" class="opt">About</a><a href="#contact">Contact</a></div></nav>
-<header class="hero"><div class="wrap">
-  <div class="eyebrow">HARDWARE ENGINEERING · PORTFOLIO · 2026</div>
+<nav><div class="wrap"><a href="#top">home</a><a href="#work">work</a><a href="#trade">try it</a><a href="#about">about</a><a href="#interests">interests</a><a href="#contact">contact</a></div></nav>
+<header class="hero" id="top"><div class="wrap">
+  <div class="eyebrow">HARDWARE ENGINEERING · DRAWING SET · REV 2026</div>
   <h1>Kareem Abu Salah</h1>
   <p class="headline">I build hardware end to end: structures, enclosures, and the firmware that runs them.</p>
   <p>I reason from physics and cost, then validate the design against what I measure. I study mechanical
@@ -96,57 +132,72 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--faint);font-s
   <div class="edu">B.S. Mechanical Engineering · A.B. Computer Science ·
     Duke University, Pratt School of Engineering · Expected May 2028 · GPA 3.56</div>
   <div class="links"><a href="#work">See the work</a><a href="Kareem_Abu_Salah_Portfolio.pdf">PDF portfolio</a><a href="mailto:kareem.abusalah@duke.edu">Email</a><a href="https://linkedin.com/in/kareem-abu-salah">LinkedIn</a><a href="https://github.com/kareemabusalah">GitHub</a></div>
+  <div class="stats">
+    <div><b data-to="6">6</b>projects, CAD to test</div>
+    <div><b data-to="30" data-suf="+">30+</b>hexacopter test flights</div>
+    <div><b data-to="26">26</b>FPV drones built and tuned</div>
+    <div><b data-to="15">15</b>fixed-wing UAVs integrated</div>
+  </div>
 </div></header>
 <section id="work"><div class="wrap">
-  <h2 class="sec">SELECTED PROJECTS · CLICK ONE FOR THE FULL CASE STUDY</h2>
+  <div class="shead"><div><span class="sheet">SHEET 01 / 05</span><h2 class="title">Selected Work.</h2></div><p>Six projects, each a sheet in the set. Open one for the full case study: what I did, how, and what the numbers say.</p></div>
   <div class="grid"><button class="card" data-open="p01">
-  <img src="assets/sail_iso.png" alt="Duke Solar Sail" loading="lazy">
-  <span class="cn">01</span>
-  <span class="ct">Duke Solar Sail</span><span class="cs">CFRP Frame Structure</span>
-  <span class="cm"><b>27.6 Hz</b> first mode, Python FEA vs. the standard's 20 Hz floor</span>
-  <span class="tags">MATERIALS SELECTION · MODAL FEA · TEST PLANNING · INTEGRATION &amp; TEST</span>
+  <span class="pic"><img src="assets/sail_iso.png" alt="Duke Solar Sail" loading="lazy"></span>
+  <span class="tb">
+    <span class="tbn">DWG 01</span>
+    <span class="ct">Duke Solar Sail</span><span class="cs">CFRP Frame Structure</span>
+    <span class="cm"><b>27.6 Hz</b> first mode, Python FEA vs. the standard's 20 Hz floor</span>
+    <span class="tags">MATERIALS SELECTION · MODAL FEA · TEST PLANNING · INTEGRATION &amp; TEST</span>
+  </span>
 </button><button class="card" data-open="p02">
-  <img src="assets/cube_assembly.jpg" alt="CubeSat" loading="lazy">
-  <span class="cn">02</span>
-  <span class="ct">CubeSat</span><span class="cs">Atmospheric Sensing System</span>
-  <span class="cm"><b>28 km</b> peak altitude logged in flight</span>
-  <span class="tags">ENCLOSURE PACKAGING · INTERNAL LAYOUT · LAUNCH-LOAD FEA</span>
+  <span class="pic"><img src="assets/cube_assembly.jpg" alt="CubeSat" loading="lazy"></span>
+  <span class="tb">
+    <span class="tbn">DWG 02</span>
+    <span class="ct">CubeSat</span><span class="cs">Atmospheric Sensing System</span>
+    <span class="cm"><b>28 km</b> peak altitude logged in flight</span>
+    <span class="tags">ENCLOSURE PACKAGING · INTERNAL LAYOUT · LAUNCH-LOAD FEA</span>
+  </span>
 </button><button class="card" data-open="p03">
-  <img src="assets/plant_home.png" alt="Plantogachi" loading="lazy">
-  <span class="cn">03</span>
-  <span class="ct">Plantogachi</span><span class="cs">Sensor-Driven Plant-Care Device</span>
-  <span class="cm"><b>$32</b> prototype BOM ($11 quoted at bulk)</span>
-  <span class="tags">ESP32-S3 FIRMWARE · ENCLOSURE DFM · SENSOR TELEMETRY</span>
+  <span class="pic"><img src="assets/plant_home.png" alt="Plantogachi" loading="lazy"></span>
+  <span class="tb">
+    <span class="tbn">DWG 03</span>
+    <span class="ct">Plantogachi</span><span class="cs">Sensor-Driven Plant-Care Device</span>
+    <span class="cm"><b>$32</b> prototype BOM ($11 quoted at bulk)</span>
+    <span class="tags">ESP32-S3 FIRMWARE · ENCLOSURE DFM · SENSOR TELEMETRY</span>
+  </span>
 </button><button class="card" data-open="p04">
-  <img src="assets/rocket_exploded.jpg" alt="McRocket" loading="lazy">
-  <span class="cn">04</span>
-  <span class="ct">McRocket</span><span class="cs">Happy Meal Toy Designed for Injection Molding</span>
-  <span class="cm"><b>< $0.36</b> per unit in the DFM cost model</span>
-  <span class="tags">DFM/DFA · TOLERANCE STACK-UP · SNAP-FIT · CONSUMER PRODUCT</span>
+  <span class="pic"><img src="assets/rocket_exploded.jpg" alt="McRocket" loading="lazy"></span>
+  <span class="tb">
+    <span class="tbn">DWG 04</span>
+    <span class="ct">McRocket</span><span class="cs">Happy Meal Toy Designed for Injection Molding</span>
+    <span class="cm"><b>< $0.36</b> per unit in the DFM cost model</span>
+    <span class="tags">DFM/DFA · TOLERANCE STACK-UP · SNAP-FIT · CONSUMER PRODUCT</span>
+  </span>
 </button><button class="card" data-open="p05">
-  <img src="assets/seed_built.jpg" alt="Sunflower Seed Shelling Machine" loading="lazy">
-  <span class="cn">05</span>
-  <span class="ct">Sunflower Seed Shelling Machine</span><span class="cs">Hand-Powered Mechanism</span>
-  <span class="cm"><b>Fastest</b> of the 4 EGR 121 course sections</span>
-  <span class="tags">MECHANISM DESIGN · PROTOTYPE ITERATION · GEAR DRIVE</span>
+  <span class="pic"><img src="assets/seed_built.jpg" alt="Sunflower Seed Shelling Machine" loading="lazy"></span>
+  <span class="tb">
+    <span class="tbn">DWG 05</span>
+    <span class="ct">Sunflower Seed Shelling Machine</span><span class="cs">Hand-Powered Mechanism</span>
+    <span class="cm"><b>Fastest</b> of the 4 EGR 121 course sections</span>
+    <span class="tags">MECHANISM DESIGN · PROTOTYPE ITERATION · GEAR DRIVE</span>
+  </span>
 </button><button class="card" data-open="p06">
-  <img src="assets/tiger_frame.jpg" alt="Tiger Enrichment Device" loading="lazy">
-  <span class="cn">06</span>
-  <span class="ct">Tiger Enrichment Device</span><span class="cs">North Carolina Zoo, Client Project</span>
-  <span class="cm"><b>400 lb</b> static load, no damage</span>
-  <span class="tags">CLIENT PRODUCT · RELIABILITY TESTING · ELECTROMECHANICAL</span>
+  <span class="pic"><img src="assets/tiger_frame.jpg" alt="Tiger Enrichment Device" loading="lazy"></span>
+  <span class="tb">
+    <span class="tbn">DWG 06</span>
+    <span class="ct">Tiger Enrichment Device</span><span class="cs">North Carolina Zoo, Client Project</span>
+    <span class="cm"><b>400 lb</b> static load, no damage</span>
+    <span class="tags">CLIENT PRODUCT · RELIABILITY TESTING · ELECTROMECHANICAL</span>
+  </span>
 </button></div>
   <p class="note"><b>Not shown: FaunaLabs, Embedded &amp; Mechanical Intern, Mar&ndash;Sep 2026.</b> I qualified a whale-tag
     enclosure to 20 MPa, designed a timed-release link, and fixed a Cortex-M7 cache/DMA race that cut dropped sensor
     frames 90%, with 97% uptime across the deployed fleet. Publishing is restricted.</p>
 </div></section>
-<section id="trade" style="background:var(--band)"><div class="wrap">
-  <h2 class="sec">TRY IT · THE SOLAR SAIL BEAM TRADE</h2>
+<section id="trade"><div class="wrap">
+  <div class="shead"><div><span class="sheet">SHEET 02 / 05</span><h2 class="title">Run the Trade.</h2></div><p>Each solar sail frame edge is a 0.5 m CFRP tube. It has to clear a flexural-rigidity floor of EI &ge; 3.8 N·m², and every gram costs sail thrust. I swept seven diameter and wall pairs and picked 8.0 &times; 0.15 mm. Drag the sliders to run the same trade.</p></div>
   <div class="trade">
     <div>
-      <p style="margin-bottom:22px">Each frame edge is a 0.5 m CFRP tube. It has to clear a flexural-rigidity floor of
-        EI &ge; 3.8 N·m², and every gram costs sail thrust. I swept seven diameter and wall pairs and picked 8.0 &times; 0.15 mm.
-        Drag the sliders to run the same trade.</p>
       <label>Outer diameter: <output id="odv"></output> mm<input type="range" id="od" min="5" max="12" step="0.1" value="8"></label>
       <label>Wall thickness: <output id="wtv"></output> mm<input type="range" id="wt" min="0.1" max="0.5" step="0.01" value="0.15"></label>
       <p class="small">Thin-walled tube, E = 230 GPa, &rho; = 1600 kg/m³: the laminate values that reproduce the design
@@ -156,14 +207,14 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--faint);font-s
     <div class="ro">
       <div class="small">Flexural rigidity EI</div><div class="big"><span id="ei"></span> N·m²</div>
       <div class="meter"><i id="bar"></i><s style="left:50%"></s></div>
-      <div class="small">Black line = 3.8 N·m² floor</div>
+      <div class="small">Yellow line = 3.8 N·m² floor</div>
       <div class="verdict" id="verdict"></div>
       <div class="small" style="margin-top:18px">Mass per beam</div><div class="big"><span id="g"></span> g</div>
     </div>
   </div>
 </div></section>
 <section id="about"><div class="wrap">
-  <h2 class="sec">ROLES I'M TARGETING</h2>
+  <div class="shead"><div><span class="sheet">SHEET 03 / 05</span><h2 class="title">Where I'm Headed.</h2></div><p></p></div>
   <div class="cols"><div><h3>Where I've been: test and V&amp;V</h3><p>Most of my paid engineering has been test and validation. I integrated and checked out 15
         fixed-wing UAVs and root-caused 30+ Li-ion test failures into QA fixes at Jordan Int'l Air Cargo &amp; Defense, wrote
         the modal-correlation and 8-cycle thermal-vacuum plans for the solar sail, ran 30+ test flights on three Aurelia
@@ -181,7 +232,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--faint);font-s
         seeing how each part, mechanical, electrical, and software, operates against the others.</p></div></div>
   <p class="note"><b>Independent Project, Supersonic Flow Visualization</b> (Sep 2026 &ndash; Present): researching
         computational models of supersonic flow ahead of schlieren imaging in NC State's supersonic wind tunnel.</p>
-  <h2 class="sec" style="margin-top:56px">TECHNICAL SKILLS</h2>
+  <h3 class="sheet" style="margin:52px 0 18px">TECHNICAL SKILLS</h3>
   <div class="skills">
     <div><b>Product design &amp; CAD</b> SolidWorks · Onshape · enclosure, snap-fit &amp; wall-thickness design · production drawings · GD&amp;T per ASME Y14.5 · functional dimensioning</div>
     <div><b>DFM / DFA</b> injection-molding design · straight-pull tooling · worst-case tolerance stack-up · sink &amp; warp control · BOM &amp; per-unit cost ownership</div>
@@ -190,15 +241,19 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--faint);font-s
     <div><b>Prototyping &amp; test</b> FDM printing · CNC mill &amp; lathe · G-code · CFRP wet layup · laser cutting · Pratt shop certified · static-load &amp; water-ingress test, modal FEA correlation planning</div>
     <div><b>Electronics &amp; software</b> Altium / KiCad PCB · Arduino, ESP32, STM32 · FreeRTOS · I²C / SPI / UART · Python · C++ · embedded C</div></div>
 </div></section>
-<section id="contact" style="background:var(--ink);color:#fff"><div class="wrap">
-  <h2 class="sec" style="color:#aeb7c2;border-color:#ffffff33">GET IN TOUCH</h2>
-  <p style="font-size:22px">Looking for a hardware internship. <a href="mailto:kareem.abusalah@duke.edu" style="color:#fff">kareem.abusalah@duke.edu</a></p>
-  <div class="links"><a href="https://linkedin.com/in/kareem-abu-salah">LinkedIn</a><a href="https://github.com/kareemabusalah">GitHub</a></div>
+<section id="interests"><div class="wrap">
+  <div class="shead"><div><span class="sheet">SHEET 04 / 05</span><h2 class="title">Off the Clock.</h2></div><p>When I'm not in the shop.</p></div>
+  <div class="ints"><div class="int"><div class="ipic"><iframe src="https://www.youtube-nocookie.com/embed/1hZouoieLPI" title="Sokaj <span dir="rtl">سوكاج</span> video" loading="lazy" allow="encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><div class="tbn">BASS</div><h3>Sokaj <span dir="rtl">سوكاج</span></h3><p>I play bass in Sokaj. Above: the official video for Red Flag.</p><a href="https://www.instagram.com/sokajband/">Instagram &rarr;</a> · <a href="https://www.youtube.com/watch?v=1hZouoieLPI">YouTube &rarr;</a></div><div class="int"><div class="ipic"><img src="assets/lampshade.jpg" alt="Lampshade" loading="lazy"></div><div class="tbn">BASS</div><h3>Lampshade</h3><p>I play bass in Lampshade, a funk-jazz group Duke's Small Town Records introduced in January 2026.</p><a href="https://www.instagram.com/p/DT9fezKFTBw/">Instagram &rarr;</a></div><div class="int"><div class="ipic"><svg viewBox="0 0 200 60" aria-hidden="true"><path d="M0 30 Q10 5 20 30 T40 30 T60 30 Q70 50 80 30 T100 30 Q110 2 120 30 T140 30 Q150 45 160 30 T180 30 T200 30" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></div><div class="tbn">FPV</div><h3>Drones</h3><p>I have built and tuned 26 FPV drones, and I fly what I build.</p></div></div>
 </div></section>
-<footer><div class="wrap">Kareem Abu Salah · Durham, NC</div></footer>
+<section id="contact"><div class="wrap">
+  <div class="shead"><div><span class="sheet">SHEET 05 / 05</span><h2 class="title">Get in Touch.</h2></div><p></p></div>
+  <p class="big serif">Looking for a hardware internship. <a href="mailto:kareem.abusalah@duke.edu">kareem.abusalah@duke.edu</a></p>
+  <div class="links"><a href="https://linkedin.com/in/kareem-abu-salah">LinkedIn</a><a href="https://github.com/kareemabusalah">GitHub</a><a href="Kareem_Abu_Salah_Portfolio.pdf">PDF portfolio</a></div>
+</div></section>
+<footer><div class="wrap"><span>KAREEM ABU SALAH · DURHAM, NC</span><a href="#top" style="text-decoration:none">&uarr; BACK TO TOP</a></div></footer>
 <dialog id="p01"><div class="dlg">
   <form method="dialog"><button class="x" aria-label="Close">&times;</button></form>
-  <div class="dn">01</div>
+  <div class="dn">DWG 01</div>
   <h2>Duke Solar Sail <span>CFRP Frame Structure</span></h2>
   <div class="pmeta">Structures and Integration &amp; Test Lead · Duke Solar Sail Spacecraft, Earth Cup RACE 1 · Mar 2026 – Present</div>
   <div class="metrics"><div class="m"><span class="mv">27.6 Hz</span><span class="ml">first mode, Python FEA vs. the standard's 20 Hz floor</span></div><div class="m"><span class="mv">2.96 g</span><span class="ml">per beam, 25% under mass budget</span></div><div class="m"><span class="mv">+73%</span><span class="ml">EI margin (6.56 N·m²)</span></div><div class="m"><span class="mv">1 of up to 50</span><span class="ml">teams advanced to STEP 2</span></div></div>
@@ -215,7 +270,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--faint);font-s
   <div class="pager"><button data-open="p06">&larr; Tiger Enrichment Device</button><button data-open="p02">CubeSat &rarr;</button></div>
 </div></dialog><dialog id="p02"><div class="dlg">
   <form method="dialog"><button class="x" aria-label="Close">&times;</button></form>
-  <div class="dn">02</div>
+  <div class="dn">DWG 02</div>
   <h2>CubeSat <span>Atmospheric Sensing System</span></h2>
   <div class="pmeta">Structures &amp; Flight-Computer Engineer · Duke SEDS · Sep 2025 – Present</div>
   <div class="metrics"><div class="m"><span class="mv">28 km</span><span class="ml">peak altitude logged in flight</span></div><div class="m"><span class="mv">2×</span><span class="ml">FEA margin at the 9 g launch spec</span></div><div class="m"><span class="mv">8 screws</span><span class="ml">the only fasteners in the assembly</span></div><div class="m"><span class="mv">9 parts</span><span class="ml">printed jigsaw-keyed chassis</span></div></div>
@@ -232,7 +287,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--faint);font-s
   <div class="pager"><button data-open="p01">&larr; Duke Solar Sail</button><button data-open="p03">Plantogachi &rarr;</button></div>
 </div></dialog><dialog id="p03"><div class="dlg">
   <form method="dialog"><button class="x" aria-label="Close">&times;</button></form>
-  <div class="dn">03</div>
+  <div class="dn">DWG 03</div>
   <h2>Plantogachi <span>Sensor-Driven Plant-Care Device</span></h2>
   <div class="pmeta">Founder &amp; Hardware/Firmware Lead · Plantogachi · May 2026 – Present</div>
   <div class="metrics"><div class="m"><span class="mv">$32</span><span class="ml">prototype BOM ($11 quoted at bulk)</span></div><div class="m"><span class="mv">3 weeks</span><span class="ml">battery on one charge, measured</span></div><div class="m"><span class="mv">86%</span><span class="ml">photo species ID</span></div><div class="m"><span class="mv">12+</span><span class="ml">customer-discovery interviews</span></div></div>
@@ -249,7 +304,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--faint);font-s
   <div class="pager"><button data-open="p02">&larr; CubeSat</button><button data-open="p04">McRocket &rarr;</button></div>
 </div></dialog><dialog id="p04"><div class="dlg">
   <form method="dialog"><button class="x" aria-label="Close">&times;</button></form>
-  <div class="dn">04</div>
+  <div class="dn">DWG 04</div>
   <h2>McRocket <span>Happy Meal Toy Designed for Injection Molding</span></h2>
   <div class="pmeta">Team Engineer, Nose Cone & Flame · EGR 121, Duke University · Spring 2026</div>
   <div class="metrics"><div class="m"><span class="mv">< $0.36</span><span class="ml">per unit in the DFM cost model</span></div><div class="m"><span class="mv">0.004″</span><span class="ml">snap-fit clearance on the FDM prototype</span></div><div class="m"><span class="mv">1.30″ OD</span><span class="ml">beats the 1.25″ choke test</span></div><div class="m"><span class="mv">6 parts</span><span class="ml">designed for straight-pull molds</span></div></div>
@@ -266,7 +321,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--faint);font-s
   <div class="pager"><button data-open="p03">&larr; Plantogachi</button><button data-open="p05">Sunflower Seed Shelling Machine &rarr;</button></div>
 </div></dialog><dialog id="p05"><div class="dlg">
   <form method="dialog"><button class="x" aria-label="Close">&times;</button></form>
-  <div class="dn">05</div>
+  <div class="dn">DWG 05</div>
   <h2>Sunflower Seed Shelling Machine <span>Hand-Powered Mechanism</span></h2>
   <div class="pmeta">Team Engineer · EGR 121, Duke University · Spring 2026</div>
   <div class="metrics"><div class="m"><span class="mv">Fastest</span><span class="ml">of the 4 EGR 121 course sections</span></div><div class="m"><span class="mv">41 kernels</span><span class="ml">clean, in a 3-min run</span></div><div class="m"><span class="mv">13.7 /min</span><span class="ml">clean-kernel throughput</span></div><div class="m"><span class="mv">6 iters</span><span class="ml">printed roller versions</span></div></div>
@@ -283,7 +338,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--faint);font-s
   <div class="pager"><button data-open="p04">&larr; McRocket</button><button data-open="p06">Tiger Enrichment Device &rarr;</button></div>
 </div></dialog><dialog id="p06"><div class="dlg">
   <form method="dialog"><button class="x" aria-label="Close">&times;</button></form>
-  <div class="dn">06</div>
+  <div class="dn">DWG 06</div>
   <h2>Tiger Enrichment Device <span>North Carolina Zoo, Client Project</span></h2>
   <div class="pmeta">Team Engineer · EGR 121 Design POD (Duke's engineering project studio) · Fall 2025 · Client: Cathy Mingee, North Carolina Zoo</div>
   <div class="metrics"><div class="m"><span class="mv">400 lb</span><span class="ml">static load, no damage</span></div><div class="m"><span class="mv">5 min</span><span class="ml">water-soak, full function held</span></div><div class="m"><span class="mv">6 mL</span><span class="ml">scent dosed every 5 h</span></div><div class="m"><span class="mv">Zero</span><span class="ml">damage or function loss, full test campaign</span></div></div>
@@ -321,5 +376,21 @@ function calc(){
     +(od===PICK[0]&&t===PICK[1]?' · this is the tube I chose':'');
 }
 ['od','wt'].forEach(i=>$(i).oninput=calc);calc();
+// transit nav: fill the dot for the sheet in the middle of the screen
+const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.hash==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('header[id],section[id]').forEach(s=>spy.observe(s));
+// React Bits-style effects in plain JS, all skipped under prefers-reduced-motion
+const calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const hero=document.querySelector('header.hero');
+hero.onpointermove=e=>{const r=hero.getBoundingClientRect();hero.style.setProperty('--mx',e.clientX-r.left+'px');hero.style.setProperty('--my',e.clientY-r.top+'px')};
+document.querySelectorAll('.card').forEach(c=>c.onpointermove=e=>{const r=c.getBoundingClientRect();c.style.setProperty('--cx',e.clientX-r.left+'px');c.style.setProperty('--cy',e.clientY-r.top+'px')});
+if(!calm){
+  const h1=document.querySelector('h1'),txt=h1.textContent,G='#%&@$01<>/';let f=0;  // decrypted text
+  const t=setInterval(()=>{h1.textContent=[...txt].map((ch,i)=>ch===' '||i<f/2?ch:G[Math.random()*G.length|0]).join('');if(++f>txt.length*2){clearInterval(t);h1.textContent=txt}},30);
+  document.querySelectorAll('[data-to]').forEach(b=>{const n=+b.dataset.to,s=b.dataset.suf||'',t0=performance.now();  // count up
+    (function step(t){const k=Math.min((t-t0)/1400,1);b.textContent=Math.round(n*(1-(1-k)**3))+s;if(k<1)requestAnimationFrame(step)})(t0)});
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('section .wrap>*').forEach(el=>{el.classList.add('reveal');io.observe(el)});  // scroll reveal
+}
 </script>
 </body></html>
