@@ -1,0 +1,32 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Plantogachi · Kareem Abu Salah</title>
+<meta name="description" content="Mechanical engineering and CS at Duke. Structures, enclosures, DFM, and the firmware that runs them.">
+<meta property="og:title" content="Plantogachi · Kareem Abu Salah">
+<meta property="og:image" content="../assets/sail_iso.png">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&family=Newsreader:opsz@6..72&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css"></head><body>
+<nav><div class="wrap"><a href="../index.html">home</a><a href="../work.html" aria-current=page>work</a><a href="../lab.html">lab</a><a href="../about.html">about</a><a href="../life.html">off the clock</a><a href="../contact.html">contact</a></div></nav>
+<main><div class="wrap"><a class="back" href="../work.html">&larr; All work</a>
+<article class="sheetpaper">
+  <div class="dn">DWG 03 · May 2026 – Present</div>
+  <h1 class="ptitle">Plantogachi <span>Sensor-Driven Plant-Care Device</span></h1>
+  <div class="pmeta">Founder &amp; Hardware/Firmware Lead · Plantogachi · May 2026 – Present</div>
+  <div class="metrics"><div class="m"><span class="mv">$32</span><span class="ml">prototype BOM ($11 quoted at bulk)</span></div><div class="m"><span class="mv">3 weeks</span><span class="ml">battery on one charge, measured</span></div><div class="m"><span class="mv">86%</span><span class="ml">photo species ID</span></div><div class="m"><span class="mv">12+</span><span class="ml">customer-discovery interviews</span></div></div>
+  <div class="dbody">
+    <div class="dtext">
+      <p class="lede">I founded Plantogachi and lead its hardware and firmware. The product turns a houseplant into a Tamagotchi: <b>an ESP32-S3 sensor puck reads the plant, streams telemetry over TLS, and drives a pixel-art character in a phone app</b>. I shipped an end-to-end MVP and tested it across 12+ customer-discovery interviews. The hardware is still a work in progress, so this page shows the software proof of concept.</p>
+      <h3>Motivation</h3><p>People kill houseplants because care gives no feedback until the plant already looks sick. I make the plant's state legible: the puck measures soil moisture, light, temperature, and humidity, and the app turns those readings into a character that reacts.</p>
+      <h3>My role</h3><p>A solo project: I designed the enclosure in SolidWorks, wrote the ESP32-S3 sensor drivers and TLS telemetry, set the bill of materials, and built the app.</p>
+      <h3>Technical approach</h3><p><b>Firmware.</b> An ESP32-S3 reads soil moisture, light, temperature, and humidity, then POSTs each reading over TLS to /api/v1/telemetry. I tuned the sample-and-sleep duty cycle for a 3-week battery.</p><p><b>Enclosure.</b> A tool-free snap-fit puck in SolidWorks on 2 mm uniform walls held the device BOM to $32 at prototype volume ($11 at bulk); the radio transmits through the plastic, needing no antenna cutout.</p><p><b>Software the puck feeds.</b> The app IDs the plant from one photo through PlantNet at 86% accuracy, generates a pixel-art sprite, and runs a health check through Gemini Vision. A GET /plants/{id}/forecast endpoint also reasons over reading history and species care profile with Gemini, cached 12 hours. A demo slider stands in for the puck.</p><p><b>A second hardware node, single source of truth.</b> Beyond the puck, I built a standalone ESP32 display device with a monochrome screen that renders the same pixel pet from a read-only endpoint, saving battery and CPU by never duplicating the backend's mood logic on-device.</p><p><b>What I would do differently, next.</b> I sequenced software first so the demo held even if hardware slipped, letting the enclosure lag the app instead of negotiating both together. Next: lock the duty cycle and battery target before freezing app scope; live-puck streaming and toy firmware are already built.</p>
+      
+    </div>
+    <div class="dfigs"><figure class="hero"><img src="../assets/plant_home.png" alt=""><figcaption>The shipped app's home screen: a live plant, its mood, level, and the four sensor-driven stat bars, all reading from the real telemetry pipeline.</figcaption></figure><figure class=""><img src="../assets/plant_retro.png" alt=""><figcaption>The second hardware node: a standalone ESP32 display device (monochrome LCD) rendering the same pixel pet independent of the app. Shown as a to-spec design mockup, not a hardware capture.</figcaption></figure><figure class=""><img src="../assets/plant_health.png" alt=""><figcaption>An AI health check: a plant photo diagnosed by Gemini Vision, returned as a verdict and care recommendations.</figcaption></figure></div>
+  </div>
+  <div class="pager"><a href="cubesat.html">&larr; CubeSat</a><a href="mcrocket.html">McRocket &rarr;</a></div>
+</article></div></main>
+<footer><div class="wrap"><span>KAREEM ABU SALAH · DURHAM, NC</span>
+  <span><a href="mailto:kareem.abusalah@duke.edu">email</a> · <a href="https://linkedin.com/in/kareem-abu-salah">linkedin</a> · <a href="https://github.com/kareemabusalah">github</a> · <a href="../Kareem_Abu_Salah_Portfolio.pdf">pdf</a></span></div></footer>
+<script src="../site.js"></script>
+</body></html>

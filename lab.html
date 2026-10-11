@@ -1,0 +1,33 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lab · Kareem Abu Salah</title>
+<meta name="description" content="Mechanical engineering and CS at Duke. Structures, enclosures, DFM, and the firmware that runs them.">
+<meta property="og:title" content="Lab · Kareem Abu Salah">
+<meta property="og:image" content="assets/sail_iso.png">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&family=Newsreader:opsz@6..72&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"></head><body>
+<nav><div class="wrap"><a href="index.html">home</a><a href="work.html">work</a><a href="lab.html" aria-current=page>lab</a><a href="about.html">about</a><a href="life.html">off the clock</a><a href="contact.html">contact</a></div></nav>
+<main><section><div class="wrap">
+  <div class="phd"><span class="sheet">SHEET 03 / 06</span><h2 class="title">The Lab.</h2><p>Each solar sail frame edge is a 0.5 m CFRP tube. It has to clear a flexural-rigidity floor of EI &ge; 3.8 N·m², and every gram costs sail thrust. I swept seven diameter and wall pairs and picked 8.0 &times; 0.15 mm. Drag the sliders to run the same trade.</p></div>
+  <div class="trade">
+    <div>
+      <label>Outer diameter: <output id="odv"></output> mm<input type="range" id="od" min="5" max="12" step="0.1" value="8"></label>
+      <label>Wall thickness: <output id="wtv"></output> mm<input type="range" id="wt" min="0.1" max="0.5" step="0.01" value="0.15"></label>
+      <p class="small">Thin-walled tube, E = 230 GPa, &rho; = 1600 kg/m³: the laminate values that reproduce the design
+        point. Stiffness grows with diameter to the fourth power and mass only with the square, which is why a wide, thin tube wins
+        until the wall gets too thin to roll-wrap or it starts to buckle locally. <a href="work/duke-solar-sail.html">Read the full solar sail case study &rarr;</a></p>
+    </div>
+    <div class="ro">
+      <div class="small">Flexural rigidity EI</div><div class="big"><span id="ei"></span> N·m²</div>
+      <div class="meter"><i id="bar"></i><s style="left:50%"></s></div>
+      <div class="small">Yellow line = 3.8 N·m² floor</div>
+      <div class="verdict" id="verdict"></div>
+      <div class="small" style="margin-top:18px">Mass per beam</div><div class="big"><span id="g"></span> g</div>
+    </div>
+  </div>
+</div></section></main>
+<footer><div class="wrap"><span>KAREEM ABU SALAH · DURHAM, NC</span>
+  <span><a href="mailto:kareem.abusalah@duke.edu">email</a> · <a href="https://linkedin.com/in/kareem-abu-salah">linkedin</a> · <a href="https://github.com/kareemabusalah">github</a> · <a href="Kareem_Abu_Salah_Portfolio.pdf">pdf</a></span></div></footer>
+<script src="site.js"></script>
+</body></html>

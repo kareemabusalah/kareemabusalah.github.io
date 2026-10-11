@@ -1,396 +1,61 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Kareem Abu Salah · Hardware Engineering Portfolio</title>
+<title>Hardware Engineering Portfolio · Kareem Abu Salah</title>
 <meta name="description" content="Mechanical engineering and CS at Duke. Structures, enclosures, DFM, and the firmware that runs them.">
-<meta property="og:title" content="Kareem Abu Salah · Hardware Engineering Portfolio">
+<meta property="og:title" content="Hardware Engineering Portfolio · Kareem Abu Salah">
 <meta property="og:image" content="assets/sail_iso.png">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&family=Newsreader:opsz@6..72&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{--bp:#1d4ed8;--bp2:#1943bd;--ink:#0f2a7a;--mut:#4a5f9e;--pale:#c9d6ff;--lw:#ffffff3d;--paper:#fff;--tint:#eef2ff;--line:#cdd8f6}
-html{scroll-behavior:smooth;scroll-padding-top:80px}
-body{font-family:"IBM Plex Sans",Arial,sans-serif;color:#fff;line-height:1.6;font-size:16px;background:var(--bp);
-  background-image:linear-gradient(#ffffff0f 1px,transparent 1px),linear-gradient(90deg,#ffffff0f 1px,transparent 1px),
-    linear-gradient(#ffffff1c 1px,transparent 1px),linear-gradient(90deg,#ffffff1c 1px,transparent 1px);
-  background-size:20px 20px,20px 20px,100px 100px,100px 100px}
-.mono,.eyebrow,.sheet,.tbn,.cm b,.tags,.dn,.mv,.dtext h3,.big,output,.small,.stats b,nav a{font-family:"IBM Plex Mono",ui-monospace,monospace}
-.serif,h1,h2.title,.ct,.dlg h2,.int h3{font-family:"Newsreader",Georgia,serif;font-weight:400;letter-spacing:-.01em}
-a{color:#fff}
-.wrap{max-width:1140px;margin:0 auto;padding:0 28px}
-/* transit-line nav: one dot per sheet, the current one fills */
-nav{position:sticky;top:0;z-index:5;background:#1d4ed8e6;backdrop-filter:blur(6px);border-bottom:1px solid var(--lw)}
-nav .wrap{display:flex;justify-content:space-between;position:relative;height:66px;align-items:center}
-nav .wrap::before{content:"";position:absolute;left:40px;right:40px;top:24px;height:1px;background:var(--lw)}
-nav a{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:11px;letter-spacing:.08em;color:var(--pale);text-decoration:none;padding-top:6px}
-nav a::before{content:"";width:13px;height:13px;border-radius:50%;border:1.5px solid var(--pale);background:var(--bp);transition:.2s}
-nav a.on{color:#fff}nav a.on::before{background:#fff;border-color:#fff;box-shadow:0 0 0 4px #ffffff33}
-nav a:hover{color:#fff}
-/* hero */
-header.hero{padding:96px 0 72px;position:relative;overflow:hidden;--mx:50%;--my:40%}
-header.hero::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background-image:linear-gradient(#ffffff55 1px,transparent 1px),linear-gradient(90deg,#ffffff55 1px,transparent 1px);background-size:20px 20px;
-  -webkit-mask:radial-gradient(220px at var(--mx) var(--my),#000,transparent);mask:radial-gradient(220px at var(--mx) var(--my),#000,transparent)}
-header.hero .wrap{position:relative;z-index:1}
-.eyebrow{font-size:12px;letter-spacing:.3em;color:var(--pale)}
-h1{font-size:clamp(52px,9vw,104px);line-height:.95;margin:14px 0 22px}
-.headline{font-size:clamp(20px,2.6vw,27px);line-height:1.35;margin-bottom:18px;max-width:780px}
-.hero p{max-width:740px;color:#e3e9ff}
-.edu{font-size:14px;color:var(--pale);margin-top:18px}
-.links{margin-top:26px;display:flex;flex-wrap:wrap;gap:12px}
-.links a{color:#fff;border:1.5px solid #fff;padding:8px 16px;text-decoration:none;font-size:14px;font-family:"IBM Plex Mono",monospace;transition:.15s}
-.links a:hover{background:#fff;color:var(--bp)}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:52px;border:1.5px solid #fff}
-.stats div{font-size:13px;color:var(--pale);padding:16px 18px;border-left:1px solid var(--lw)}.stats div:first-child{border:0}
-.stats b{display:block;font-weight:600;font-size:clamp(30px,4vw,44px);line-height:1.1;color:#fff}
-/* sections read as sheets of a drawing set */
-section{padding:84px 0;border-top:1px solid var(--lw)}
-.shead{display:grid;grid-template-columns:240px 1fr;gap:36px;margin-bottom:34px;align-items:end}
-.sheet{font-size:11px;letter-spacing:.2em;color:var(--pale);display:block;margin-bottom:6px}
-h2.title{font-size:clamp(40px,5vw,58px);line-height:1}
-.shead p{color:#e3e9ff;max-width:640px}
-/* project cards: white paper with a drawing title block */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px}
-.card{all:unset;cursor:pointer;display:flex;flex-direction:column;background:var(--paper);color:var(--ink);position:relative;
-  border-radius:4px;overflow:hidden;transition:transform .15s,box-shadow .15s;--cx:50%;--cy:50%}
-.card:hover,.card:focus-visible{transform:translateY(-4px);box-shadow:0 14px 34px #0a1f6a66}
-.card:focus-visible{outline:2px solid #fff;outline-offset:3px}
-.card::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .2s;
-  background:radial-gradient(300px at var(--cx) var(--cy),#1d4ed81c,transparent 70%)}
-.card:hover::after{opacity:1}
-.pic{display:block;height:220px;background:var(--tint);padding:12px}
-.pic img{width:100%;height:100%;object-fit:contain}
-.tb{display:flex;flex-direction:column;margin:12px;border:1.5px solid var(--ink);padding:12px 14px;flex:1}
-.tbn{font-size:11px;letter-spacing:.18em;color:var(--mut)}
-.ct{font-size:25px;line-height:1.15;margin-top:4px}
-.cs{color:var(--mut);font-size:14px}
-.cm{margin-top:10px;padding-top:10px;border-top:1px solid var(--line);font-size:14px;color:var(--mut)}.cm b{color:var(--ink);font-size:17px}
-.tags{margin-top:auto;padding-top:10px;font-size:10.5px;letter-spacing:.1em;color:var(--mut)}
-.note{margin-top:28px;padding:14px 18px;border:1px dashed var(--pale);color:#e3e9ff;font-size:15px}
-/* beam trade */
-.trade{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
-.trade label{display:block;font-size:14px;color:var(--pale);margin-bottom:18px}
-.trade input{width:100%;accent-color:#fff}
-.trade output{font-weight:600;color:#fff}
-.ro{border:1.5px solid #fff;padding:22px;background:var(--bp2)}
-.ro .big{font-size:32px;font-weight:600}
-.meter{height:12px;background:#ffffff26;position:relative;margin:8px 0 4px;overflow:hidden}
-.meter i{position:absolute;inset:0 auto 0 0;background:#fff;transition:width .1s}
-.meter s{position:absolute;top:-2px;bottom:-2px;width:2px;background:#ffd23f}
-.verdict{font-weight:600;margin-top:10px}.ok{color:#8dffb0}.bad{color:#ffb4b4}
-.small{font-size:12.5px;color:var(--pale)}
-/* about, skills, interests */
-.cols{display:grid;grid-template-columns:1fr 1fr;gap:40px}.cols h3{font-size:17px;margin-bottom:8px}.cols p{color:#e3e9ff}
-.skills{display:grid;grid-template-columns:1fr 1fr;gap:18px 40px;font-size:15px;color:#e3e9ff}
-.skills b{display:block;color:#fff;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-family:"IBM Plex Mono",monospace}
-.ints{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:22px}
-.int{background:var(--paper);color:var(--ink);padding:14px;border-radius:4px}
-.ipic{height:170px;background:var(--tint);display:flex;align-items:center;justify-content:center;color:var(--bp);margin-bottom:12px;overflow:hidden}
-.ipic{aspect-ratio:16/10;height:auto}.ipic img,.ipic iframe{width:100%;height:100%;object-fit:cover;object-position:50% 75%;border:0}.ipic svg{width:70%}
-.int h3{font-size:26px;line-height:1.1;margin:2px 0 6px}.int p{color:var(--mut);font-size:15px}.int a{color:var(--bp);font-weight:600}
-#contact .big{font-size:clamp(24px,3vw,34px)}
-footer{border-top:1px solid var(--lw);padding:26px 0;color:var(--pale);font-size:12px}
-footer .wrap{display:flex;justify-content:space-between}
-/* case-study dialogs: a white sheet over the blueprint */
-dialog{border:0;border-radius:4px;width:min(1100px,94vw);max-height:92vh;padding:0;margin:auto;color:var(--ink)}
-dialog::backdrop{background:#0b1d5ccc}
-.dlg{padding:34px 38px 40px;position:relative}
-.x{position:sticky;top:0;float:right;font-size:30px;line-height:1;background:#fff;border:1.5px solid var(--ink);border-radius:50%;
-  width:42px;height:42px;cursor:pointer;color:var(--ink)}
-.dn{font-size:12px;letter-spacing:.18em;color:var(--mut)}
-.dlg h2{font-size:38px;line-height:1.1}.dlg h2 span{color:var(--mut);font-size:24px}
-.pmeta{font-size:14px;color:var(--mut);margin:6px 0 18px}
-.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));border:1.5px solid var(--ink)}
-.m{display:flex;flex-direction:column;line-height:1.2;padding:14px 16px;border-left:1px solid var(--line)}.m:first-child{border:0}
-.mv{font-size:21px;font-weight:600}.ml{font-size:13px;color:var(--mut)}
-.dbody{display:grid;grid-template-columns:1.25fr 1fr;gap:32px;margin-top:26px}
-.dtext p{margin-bottom:10px}.lede{font-size:17px}
-.dtext h3{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--mut);margin:20px 0 6px;font-weight:600}
-.dtext a{color:var(--bp)}
-.dfigs{display:flex;flex-direction:column;gap:16px}
-figure{border:1px solid var(--line);overflow:hidden;background:var(--tint)}
-figure img{width:100%;display:block}
-figcaption{font-size:13px;color:var(--mut);padding:8px 10px;line-height:1.4;background:#fff}
-.pager{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line)}
-.pager button{background:none;border:1.5px solid var(--ink);padding:10px 16px;cursor:pointer;font:inherit;font-size:14px;color:var(--ink)}
-.pager button:hover{background:var(--ink);color:#fff}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}.reveal.in{opacity:1;transform:none}
-@media(max-width:760px){.dbody,.trade,.skills,.cols,.shead{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}
-  .stats div:nth-child(3){border-left:0}.dlg{padding:22px 18px}nav a{font-size:0;gap:0}nav .wrap::before{left:34px;right:34px}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
-</style></head><body>
-<nav><div class="wrap"><a href="#top">home</a><a href="#work">work</a><a href="#trade">try it</a><a href="#about">about</a><a href="#interests">interests</a><a href="#contact">contact</a></div></nav>
-<header class="hero" id="top"><div class="wrap">
-  <div class="eyebrow">HARDWARE ENGINEERING · DRAWING SET · REV 2026</div>
-  <h1>Kareem Abu Salah</h1>
-  <p class="headline">I build hardware end to end: structures, enclosures, and the firmware that runs them.</p>
-  <p>I reason from physics and cost, then validate the design against what I measure. I study mechanical
-    engineering and computer science at Duke, and I build physical systems end to end: structures, enclosures, power,
-    and the firmware that runs them. I also operate what I build, with 30+ flight tests on lab hexacopters and 26 FPV
-    drones built and tuned. This portfolio collects six projects. Five carried from CAD to prototype to test and were
-    revised against measured data; the solar sail is analyzed and specified, with its tests planned for the build phase.</p>
-  <div class="edu">B.S. Mechanical Engineering · A.B. Computer Science ·
-    Duke University, Pratt School of Engineering · Expected May 2028 · GPA 3.56</div>
-  <div class="links"><a href="#work">See the work</a><a href="Kareem_Abu_Salah_Portfolio.pdf">PDF portfolio</a><a href="mailto:kareem.abusalah@duke.edu">Email</a><a href="https://linkedin.com/in/kareem-abu-salah">LinkedIn</a><a href="https://github.com/kareemabusalah">GitHub</a></div>
+<link rel="stylesheet" href="style.css"></head><body>
+<nav><div class="wrap"><a href="index.html" aria-current=page>home</a><a href="work.html">work</a><a href="lab.html">lab</a><a href="about.html">about</a><a href="life.html">off the clock</a><a href="contact.html">contact</a></div></nav>
+<main><div class="hero"><div class="wrap">
+  <div class="home" style="grid-template-columns:1fr">
+    <div>
+      <div class="eyebrow">HARDWARE ENGINEERING · DRAWING SET · REV 2026</div>
+      <h1 class="hey">Hey! I'm <span class="scr">Kareem</span>.</h1>
+      <p class="headline">I build hardware end to end: structures, enclosures, and the firmware that runs them. Mechanical engineering and CS at Duke, class of 2028.</p>
+      <dl class="cpn">
+        <dt>CURRENTLY</dt><dd>Structures and integration &amp; test lead on the Duke Solar Sail, building Plantogachi, and modeling supersonic flow ahead of schlieren imaging at NC State.</dd>
+        <dt>PREVIOUSLY</dt><dd>Embedded and mechanical intern at FaunaLabs (whale-tag enclosure to 20 MPa), UAV integration and Li-ion failure analysis at Jordan Int'l Air Cargo &amp; Defense, and 30+ test flights on lab hexacopters.</dd>
+        <dt>NEXT</dt><dd>A hardware internship where I own a device from CAD and firmware through the test that proves it. <a href="contact.html">Get in touch &rarr;</a></dd>
+      </dl>
+    </div>
+    
+  </div>
   <div class="stats">
     <div><b data-to="6">6</b>projects, CAD to test</div>
     <div><b data-to="30" data-suf="+">30+</b>hexacopter test flights</div>
     <div><b data-to="26">26</b>FPV drones built and tuned</div>
     <div><b data-to="15">15</b>fixed-wing UAVs integrated</div>
   </div>
-</div></header>
-<section id="work"><div class="wrap">
-  <div class="shead"><div><span class="sheet">SHEET 01 / 05</span><h2 class="title">Selected Work.</h2></div><p>Six projects, each a sheet in the set. Open one for the full case study: what I did, how, and what the numbers say.</p></div>
-  <div class="grid"><button class="card" data-open="p01">
+  <div class="more"><span class="sheet" style="margin:0">RECENT WORK</span><a href="work.html">ALL 6 PROJECTS &rarr;</a></div>
+  <div class="grid" style="margin-bottom:80px"><a class="card" href="work/duke-solar-sail.html">
   <span class="pic"><img src="assets/sail_iso.png" alt="Duke Solar Sail" loading="lazy"></span>
   <span class="tb">
-    <span class="tbn">DWG 01</span>
+    <span class="tbn">DWG 01 · Mar 2026 – Present</span>
     <span class="ct">Duke Solar Sail</span><span class="cs">CFRP Frame Structure</span>
     <span class="cm"><b>27.6 Hz</b> first mode, Python FEA vs. the standard's 20 Hz floor</span>
     <span class="tags">MATERIALS SELECTION · MODAL FEA · TEST PLANNING · INTEGRATION &amp; TEST</span>
   </span>
-</button><button class="card" data-open="p02">
+</a><a class="card" href="work/cubesat.html">
   <span class="pic"><img src="assets/cube_assembly.jpg" alt="CubeSat" loading="lazy"></span>
   <span class="tb">
-    <span class="tbn">DWG 02</span>
+    <span class="tbn">DWG 02 · Sep 2025 – Present</span>
     <span class="ct">CubeSat</span><span class="cs">Atmospheric Sensing System</span>
     <span class="cm"><b>28 km</b> peak altitude logged in flight</span>
     <span class="tags">ENCLOSURE PACKAGING · INTERNAL LAYOUT · LAUNCH-LOAD FEA</span>
   </span>
-</button><button class="card" data-open="p03">
+</a><a class="card" href="work/plantogachi.html">
   <span class="pic"><img src="assets/plant_home.png" alt="Plantogachi" loading="lazy"></span>
   <span class="tb">
-    <span class="tbn">DWG 03</span>
+    <span class="tbn">DWG 03 · May 2026 – Present</span>
     <span class="ct">Plantogachi</span><span class="cs">Sensor-Driven Plant-Care Device</span>
     <span class="cm"><b>$32</b> prototype BOM ($11 quoted at bulk)</span>
     <span class="tags">ESP32-S3 FIRMWARE · ENCLOSURE DFM · SENSOR TELEMETRY</span>
   </span>
-</button><button class="card" data-open="p04">
-  <span class="pic"><img src="assets/rocket_exploded.jpg" alt="McRocket" loading="lazy"></span>
-  <span class="tb">
-    <span class="tbn">DWG 04</span>
-    <span class="ct">McRocket</span><span class="cs">Happy Meal Toy Designed for Injection Molding</span>
-    <span class="cm"><b>< $0.36</b> per unit in the DFM cost model</span>
-    <span class="tags">DFM/DFA · TOLERANCE STACK-UP · SNAP-FIT · CONSUMER PRODUCT</span>
-  </span>
-</button><button class="card" data-open="p05">
-  <span class="pic"><img src="assets/seed_built.jpg" alt="Sunflower Seed Shelling Machine" loading="lazy"></span>
-  <span class="tb">
-    <span class="tbn">DWG 05</span>
-    <span class="ct">Sunflower Seed Shelling Machine</span><span class="cs">Hand-Powered Mechanism</span>
-    <span class="cm"><b>Fastest</b> of the 4 EGR 121 course sections</span>
-    <span class="tags">MECHANISM DESIGN · PROTOTYPE ITERATION · GEAR DRIVE</span>
-  </span>
-</button><button class="card" data-open="p06">
-  <span class="pic"><img src="assets/tiger_frame.jpg" alt="Tiger Enrichment Device" loading="lazy"></span>
-  <span class="tb">
-    <span class="tbn">DWG 06</span>
-    <span class="ct">Tiger Enrichment Device</span><span class="cs">North Carolina Zoo, Client Project</span>
-    <span class="cm"><b>400 lb</b> static load, no damage</span>
-    <span class="tags">CLIENT PRODUCT · RELIABILITY TESTING · ELECTROMECHANICAL</span>
-  </span>
-</button></div>
-  <p class="note"><b>Not shown: FaunaLabs, Embedded &amp; Mechanical Intern, Mar&ndash;Sep 2026.</b> I qualified a whale-tag
-    enclosure to 20 MPa, designed a timed-release link, and fixed a Cortex-M7 cache/DMA race that cut dropped sensor
-    frames 90%, with 97% uptime across the deployed fleet. Publishing is restricted.</p>
-</div></section>
-<section id="trade"><div class="wrap">
-  <div class="shead"><div><span class="sheet">SHEET 02 / 05</span><h2 class="title">Run the Trade.</h2></div><p>Each solar sail frame edge is a 0.5 m CFRP tube. It has to clear a flexural-rigidity floor of EI &ge; 3.8 N·m², and every gram costs sail thrust. I swept seven diameter and wall pairs and picked 8.0 &times; 0.15 mm. Drag the sliders to run the same trade.</p></div>
-  <div class="trade">
-    <div>
-      <label>Outer diameter: <output id="odv"></output> mm<input type="range" id="od" min="5" max="12" step="0.1" value="8"></label>
-      <label>Wall thickness: <output id="wtv"></output> mm<input type="range" id="wt" min="0.1" max="0.5" step="0.01" value="0.15"></label>
-      <p class="small">Thin-walled tube, E = 230 GPa, &rho; = 1600 kg/m³: the laminate values that reproduce the design
-        point. Stiffness grows with diameter to the fourth power and mass only with the square, which is why a wide, thin tube wins
-        until the wall gets too thin to roll-wrap or it starts to buckle locally.</p>
-    </div>
-    <div class="ro">
-      <div class="small">Flexural rigidity EI</div><div class="big"><span id="ei"></span> N·m²</div>
-      <div class="meter"><i id="bar"></i><s style="left:50%"></s></div>
-      <div class="small">Yellow line = 3.8 N·m² floor</div>
-      <div class="verdict" id="verdict"></div>
-      <div class="small" style="margin-top:18px">Mass per beam</div><div class="big"><span id="g"></span> g</div>
-    </div>
-  </div>
-</div></section>
-<section id="about"><div class="wrap">
-  <div class="shead"><div><span class="sheet">SHEET 03 / 05</span><h2 class="title">Where I'm Headed.</h2></div><p></p></div>
-  <div class="cols"><div><h3>Where I've been: test and V&amp;V</h3><p>Most of my paid engineering has been test and validation. I integrated and checked out 15
-        fixed-wing UAVs and root-caused 30+ Li-ion test failures into QA fixes at Jordan Int'l Air Cargo &amp; Defense, wrote
-        the modal-correlation and 8-cycle thermal-vacuum plans for the solar sail, ran 30+ test flights on three Aurelia
-        X-600 hexacopters and recalibrated their IMU and motion capture from flight logs in QGroundControl, and built and
-        tuned 26 FPV drones. That work taught me what breaks and why: which weak spot-weld
-        raises a battery pack's resistance, which wall sinks in the mold, which cached read goes stale under DMA.</p></div>
-    <div><h3>Where I'm going: design, manufacturing, embedded HW/SW</h3><p>I want to move that failure judgment upstream into the design itself. I have already done it on my
-        own work. <b>Design:</b> the CFRP solar-sail frame, analyzed and specified in SolidWorks and FEA, the Plantogachi
-        enclosure, and the McRocket toy with its drawing package. <b>Manufacturing:</b> injection-molding DFM, worst-case tolerance
-        stack-up, seal and part-count consolidation, and BOM-and-cost ownership down to $0.36 a unit. <b>Embedded
-        hardware and software:</b> ESP32-S3 and STM32 firmware, TLS telemetry, a drone power-distribution board in Altium, and
-        radar, lidar, and depth cameras time-synced over ROS 2 in the Cyber-Physical Systems Lab. I'm looking for an
-        internship where I own a device from CAD and firmware through the test that
-        proves it. I stay open to any role, though: a product works as one interconnected system, and I learn fastest by
-        seeing how each part, mechanical, electrical, and software, operates against the others.</p></div></div>
-  <p class="note"><b>Independent Project, Supersonic Flow Visualization</b> (Sep 2026 &ndash; Present): researching
-        computational models of supersonic flow ahead of schlieren imaging in NC State's supersonic wind tunnel.</p>
-  <h3 class="sheet" style="margin:52px 0 18px">TECHNICAL SKILLS</h3>
-  <div class="skills">
-    <div><b>Product design &amp; CAD</b> SolidWorks · Onshape · enclosure, snap-fit &amp; wall-thickness design · production drawings · GD&amp;T per ASME Y14.5 · functional dimensioning</div>
-    <div><b>DFM / DFA</b> injection-molding design · straight-pull tooling · worst-case tolerance stack-up · sink &amp; warp control · BOM &amp; per-unit cost ownership</div>
-    <div><b>Materials &amp; processes</b> thermoplastics (ABS, PLA, PETG) · CFRP composites · adhesive bonded joints · polyimide film · metals · materials selection</div>
-    <div><b>Analysis</b> FEA (Ansys, EasyFEA) static, modal, thermal · classical hand calculation · mass &amp; margin optimization · trade studies</div>
-    <div><b>Prototyping &amp; test</b> FDM printing · CNC mill &amp; lathe · G-code · CFRP wet layup · laser cutting · Pratt shop certified · static-load &amp; water-ingress test, modal FEA correlation planning</div>
-    <div><b>Electronics &amp; software</b> Altium / KiCad PCB · Arduino, ESP32, STM32 · FreeRTOS · I²C / SPI / UART · Python · C++ · embedded C</div></div>
-</div></section>
-<section id="interests"><div class="wrap">
-  <div class="shead"><div><span class="sheet">SHEET 04 / 05</span><h2 class="title">Off the Clock.</h2></div><p>When I'm not in the shop.</p></div>
-  <div class="ints"><div class="int"><div class="ipic"><iframe src="https://www.youtube-nocookie.com/embed/1hZouoieLPI" title="Sokaj <span dir="rtl">سوكاج</span> video" loading="lazy" allow="encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><div class="tbn">BASS</div><h3>Sokaj <span dir="rtl">سوكاج</span></h3><p>I play bass in Sokaj. Above: the official video for Red Flag.</p><a href="https://www.instagram.com/sokajband/">Instagram &rarr;</a> · <a href="https://www.youtube.com/watch?v=1hZouoieLPI">YouTube &rarr;</a></div><div class="int"><div class="ipic"><img src="assets/lampshade.jpg" alt="Lampshade" loading="lazy"></div><div class="tbn">BASS</div><h3>Lampshade</h3><p>I play bass in Lampshade, a funk-jazz group Duke's Small Town Records introduced in January 2026.</p><a href="https://www.instagram.com/p/DT9fezKFTBw/">Instagram &rarr;</a></div><div class="int"><div class="ipic"><svg viewBox="0 0 200 60" aria-hidden="true"><path d="M0 30 Q10 5 20 30 T40 30 T60 30 Q70 50 80 30 T100 30 Q110 2 120 30 T140 30 Q150 45 160 30 T180 30 T200 30" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></div><div class="tbn">FPV</div><h3>Drones</h3><p>I have built and tuned 26 FPV drones, and I fly what I build.</p></div></div>
-</div></section>
-<section id="contact"><div class="wrap">
-  <div class="shead"><div><span class="sheet">SHEET 05 / 05</span><h2 class="title">Get in Touch.</h2></div><p></p></div>
-  <p class="big serif">Looking for a hardware internship. <a href="mailto:kareem.abusalah@duke.edu">kareem.abusalah@duke.edu</a></p>
-  <div class="links"><a href="https://linkedin.com/in/kareem-abu-salah">LinkedIn</a><a href="https://github.com/kareemabusalah">GitHub</a><a href="Kareem_Abu_Salah_Portfolio.pdf">PDF portfolio</a></div>
-</div></section>
-<footer><div class="wrap"><span>KAREEM ABU SALAH · DURHAM, NC</span><a href="#top" style="text-decoration:none">&uarr; BACK TO TOP</a></div></footer>
-<dialog id="p01"><div class="dlg">
-  <form method="dialog"><button class="x" aria-label="Close">&times;</button></form>
-  <div class="dn">DWG 01</div>
-  <h2>Duke Solar Sail <span>CFRP Frame Structure</span></h2>
-  <div class="pmeta">Structures and Integration &amp; Test Lead · Duke Solar Sail Spacecraft, Earth Cup RACE 1 · Mar 2026 – Present</div>
-  <div class="metrics"><div class="m"><span class="mv">27.6 Hz</span><span class="ml">first mode, Python FEA vs. the standard's 20 Hz floor</span></div><div class="m"><span class="mv">2.96 g</span><span class="ml">per beam, 25% under mass budget</span></div><div class="m"><span class="mv">+73%</span><span class="ml">EI margin (6.56 N·m²)</span></div><div class="m"><span class="mv">1 of up to 50</span><span class="ml">teams advanced to STEP 2</span></div></div>
-  <div class="dbody">
-    <div class="dtext">
-      <p class="lede">I led the structural design, modal analysis, and verification test plan for a <b>hexagonal carbon-fiber frame</b>, 0.5 m per edge, that tensions a thin CP1 polyimide membrane, for Earth Cup RACE 1, an international student spacecraft competition. The design clears both MembraneSat Standard floors, flexural rigidity EI ≥ 3.8 N·m² and launch first-mode f₁ ≥ 20 Hz, inside a tight mass budget. We advanced to <b>STEP 2, one of up to 50 teams</b>. The frame is <b>analyzed and specified, not yet built</b>, at technology-readiness level (TRL) 3 to 4; STEP 2 is the build-and-test phase toward TRL 6 and a very-low-Earth-orbit launch targeting summer 2027.</p>
-      <h3>Motivation</h3><p>Every gram of frame lowers the sail's area-to-mass ratio and its solar-pressure thrust, so the job is to hit the stiffness floor at minimum mass.</p>
-      <h3>My role</h3><p>I chose the material and cross-section, built the beam-element modal model, cross-checked it by hand, and wrote the verification test plan. As Integration &amp; Test Lead I am now writing the magnetorquer acceptance procedure and reviewing how the membrane attaches to the frame.</p>
-      <h3>Technical approach</h3><p><b>Material and cross-section.</b> High-modulus M40J-class CFRP tubes joined at SLS-nylon nodes: specific stiffness about 5× aluminum, near-zero axial CTE to hold preload across the 10–50 °C launch band. I took the round tube over a stiffer square (I/A 1.00 vs 1.34 at equal area) for roll-wrapped manufacturability and buckling margin. A seven-geometry OD/wall sweep landed on 8.0 mm × 0.15 mm, 2.96 g per beam, clearing the EI floor by 73%.</p><p><b>Modal FEA.</b> A 402-DOF Python beam-element model (EasyFEA): six edges as Euler–Bernoulli beams, five nodes clamped. First mode out-of-plane at 27.6 Hz against the 20 Hz floor, mode-2 gap over 11×; a Rayleigh two-cantilever hand check lands within 4.3%. A lumped-mass sweep at the free node set the 15 g node mass budget. Ansys with rigid clamps gives 37.8 Hz; the gap is the rigid-clamp assumption against the real joint.</p><p><b>Verification plan (planned, not yet run).</b> Every gate ties to a prediction: k⊥ 345 N/m ±15%, f₁ ±10%, linearity R² > 0.99. A 0.8 g ICP accelerometer caps modal-test mass loading at 7%, so the plan corrects the f₁ gate from 27.6 to 26.7 Hz. An eight-cycle −40 to +85 °C thermal-vacuum plan targets the riskiest joint, carbon bonded to nylon. I screened 3M Scotch-Weld 2216 for outgassing: CVCM 0.04%, TML 0.77% against ASTM E595.</p><p><b>Integration &amp; test, in progress.</b> I am writing the magnetorquer acceptance procedure: a water-float jig simulates 0 g and confirms each unit aligns with the field. Membrane attachment methods are under review against the literature; my review ruled out a rigid film mount on thermal growth and recommended constant-force springs at the nodes.</p><p><b>What I would do differently.</b> I ran the Ansys cross-check after the Python model, so the rigid-clamp gap surfaced late; I would reconcile the two models before any hardware.</p>
-      <p><a href="#trade" class="go">Try the beam trade yourself &rarr;</a></p>
-    </div>
-    <div class="dfigs"><figure class="hero"><img src="assets/sail_iso.png" alt=""><figcaption>SolidWorks isometric of the sail assembly I designed: the hexagonal CFRP frame tensions the CP1 membrane, with magnetorquers and ChipSats on opposite edges for a balanced center of mass.</figcaption></figure><figure class=""><img src="assets/sail_node.jpg" alt=""><figcaption>CAD node detail: a triangular SLS-nylon joint with rounded fillets carries load into the tube ends; the shear pad and screw hold the deployment preload.</figcaption></figure><figure class=""><img src="assets/sail_modeshape.png" alt=""><figcaption>Ansys modal cross-check of the first bending mode at 37.8 Hz with rigid clamps, an upper bound on the 27.6 Hz Python FEA result; both clear the 20 Hz floor.</figcaption></figure></div>
-  </div>
-  <div class="pager"><button data-open="p06">&larr; Tiger Enrichment Device</button><button data-open="p02">CubeSat &rarr;</button></div>
-</div></dialog><dialog id="p02"><div class="dlg">
-  <form method="dialog"><button class="x" aria-label="Close">&times;</button></form>
-  <div class="dn">DWG 02</div>
-  <h2>CubeSat <span>Atmospheric Sensing System</span></h2>
-  <div class="pmeta">Structures &amp; Flight-Computer Engineer · Duke SEDS · Sep 2025 – Present</div>
-  <div class="metrics"><div class="m"><span class="mv">28 km</span><span class="ml">peak altitude logged in flight</span></div><div class="m"><span class="mv">2×</span><span class="ml">FEA margin at the 9 g launch spec</span></div><div class="m"><span class="mv">8 screws</span><span class="ml">the only fasteners in the assembly</span></div><div class="m"><span class="mv">9 parts</span><span class="ml">printed jigsaw-keyed chassis</span></div></div>
-  <div class="dbody">
-    <div class="dtext">
-      <p class="lede">I owned the chassis and internal layout for a <b>1U CubeSat prototype that records atmospheric data on a weather-balloon flight</b>. I designed the printed structure, wired and tested all electronics, wrote the Arduino firmware, and ran FEA confirming the structure survives a 9 g launch load at a 2× safety factor. I analyzed to the CubeSat launch spec rather than the balloon's actual loads, so the chassis carries over to a future orbital launch unchanged.</p>
-      <h3>Motivation</h3><p>A flight-representative 1U prototype for the Duke Society for Exploration of Deep Space. It has to package sensing, logging, power, and recovery hardware into a printed chassis that survives launch and reads clean outside air at altitude.</p>
-      <h3>My role</h3><p>I designed all nine printed parts and the internal layout, wired and bench-tested the electronics, wrote the firmware, and ran the launch-load FEA.</p>
-      <h3>Technical approach</h3><p><b>Chassis.</b> Nine 3D-printed parts, six jigsaw-style exterior panels and three internal mounts, clamp top-to-bottom under eight wood screws through channels. Each panel carries a laser-cut foam insert sized to its components for altitude insulation.</p><p><b>Layout decisions.</b> I angled the Arduino on a 45° platform so the over-long battery cable tucks into the bay. I sealed the BMP390 in a ventilated front cavity so it reads outside air while the electronics bay stays isolated. The camera and the GPS/AirTag tracker each sit in a form-fitted cage for imaging and post-flight recovery.</p><p><b>Electronics.</b> An Arduino Uno reads a BMP390 barometric and temperature sensor over I²C and logs to an SD-card module over SPI through the flight.</p><p><b>What I would do differently.</b> I angled the Arduino on a 45° platform to swallow an over-long battery cable instead of specifying a shorter one, spending bay volume on a problem I could have deleted. I would drop the wood screws: they carry the 9 g load path into printed panels, and they are the joint I expect to loosen under a vibration the balloon flight never applies.</p>
-      
-    </div>
-    <div class="dfigs"><figure class="hero"><img src="assets/cube_assembly.jpg" alt=""><figcaption>Second prototype in blue and red PLA: jigsaw panel joints, top-to-bottom screws, and an eyelet for the balloon line.</figcaption></figure><figure class=""><img src="assets/cube_exposed.jpg" alt=""><figcaption>Chassis with two panels off: the 45° Arduino platform, the enclosed 9 V battery bay beneath it, and the jigsaw tabs that key each panel to its neighbors.</figcaption></figure><figure class=""><img src="assets/cube_cad.png" alt=""><figcaption>CAD: the assembled cube beside all printed panels laid out flat, the jigsaw keys visible on each panel edge.</figcaption></figure></div>
-  </div>
-  <div class="pager"><button data-open="p01">&larr; Duke Solar Sail</button><button data-open="p03">Plantogachi &rarr;</button></div>
-</div></dialog><dialog id="p03"><div class="dlg">
-  <form method="dialog"><button class="x" aria-label="Close">&times;</button></form>
-  <div class="dn">DWG 03</div>
-  <h2>Plantogachi <span>Sensor-Driven Plant-Care Device</span></h2>
-  <div class="pmeta">Founder &amp; Hardware/Firmware Lead · Plantogachi · May 2026 – Present</div>
-  <div class="metrics"><div class="m"><span class="mv">$32</span><span class="ml">prototype BOM ($11 quoted at bulk)</span></div><div class="m"><span class="mv">3 weeks</span><span class="ml">battery on one charge, measured</span></div><div class="m"><span class="mv">86%</span><span class="ml">photo species ID</span></div><div class="m"><span class="mv">12+</span><span class="ml">customer-discovery interviews</span></div></div>
-  <div class="dbody">
-    <div class="dtext">
-      <p class="lede">I founded Plantogachi and lead its hardware and firmware. The product turns a houseplant into a Tamagotchi: <b>an ESP32-S3 sensor puck reads the plant, streams telemetry over TLS, and drives a pixel-art character in a phone app</b>. I shipped an end-to-end MVP and tested it across 12+ customer-discovery interviews. The hardware is still a work in progress, so this page shows the software proof of concept.</p>
-      <h3>Motivation</h3><p>People kill houseplants because care gives no feedback until the plant already looks sick. I make the plant's state legible: the puck measures soil moisture, light, temperature, and humidity, and the app turns those readings into a character that reacts.</p>
-      <h3>My role</h3><p>A solo project: I designed the enclosure in SolidWorks, wrote the ESP32-S3 sensor drivers and TLS telemetry, set the bill of materials, and built the app.</p>
-      <h3>Technical approach</h3><p><b>Firmware.</b> An ESP32-S3 reads soil moisture, light, temperature, and humidity, then POSTs each reading over TLS to /api/v1/telemetry. I tuned the sample-and-sleep duty cycle for a 3-week battery.</p><p><b>Enclosure.</b> A tool-free snap-fit puck in SolidWorks on 2 mm uniform walls held the device BOM to $32 at prototype volume ($11 at bulk); the radio transmits through the plastic, needing no antenna cutout.</p><p><b>Software the puck feeds.</b> The app IDs the plant from one photo through PlantNet at 86% accuracy, generates a pixel-art sprite, and runs a health check through Gemini Vision. A GET /plants/{id}/forecast endpoint also reasons over reading history and species care profile with Gemini, cached 12 hours. A demo slider stands in for the puck.</p><p><b>A second hardware node, single source of truth.</b> Beyond the puck, I built a standalone ESP32 display device with a monochrome screen that renders the same pixel pet from a read-only endpoint, saving battery and CPU by never duplicating the backend's mood logic on-device.</p><p><b>What I would do differently, next.</b> I sequenced software first so the demo held even if hardware slipped, letting the enclosure lag the app instead of negotiating both together. Next: lock the duty cycle and battery target before freezing app scope; live-puck streaming and toy firmware are already built.</p>
-      
-    </div>
-    <div class="dfigs"><figure class="hero"><img src="assets/plant_home.png" alt=""><figcaption>The shipped app's home screen: a live plant, its mood, level, and the four sensor-driven stat bars, all reading from the real telemetry pipeline.</figcaption></figure><figure class=""><img src="assets/plant_retro.png" alt=""><figcaption>The second hardware node: a standalone ESP32 display device (monochrome LCD) rendering the same pixel pet independent of the app. Shown as a to-spec design mockup, not a hardware capture.</figcaption></figure><figure class=""><img src="assets/plant_health.png" alt=""><figcaption>An AI health check: a plant photo diagnosed by Gemini Vision, returned as a verdict and care recommendations.</figcaption></figure></div>
-  </div>
-  <div class="pager"><button data-open="p02">&larr; CubeSat</button><button data-open="p04">McRocket &rarr;</button></div>
-</div></dialog><dialog id="p04"><div class="dlg">
-  <form method="dialog"><button class="x" aria-label="Close">&times;</button></form>
-  <div class="dn">DWG 04</div>
-  <h2>McRocket <span>Happy Meal Toy Designed for Injection Molding</span></h2>
-  <div class="pmeta">Team Engineer, Nose Cone & Flame · EGR 121, Duke University · Spring 2026</div>
-  <div class="metrics"><div class="m"><span class="mv">< $0.36</span><span class="ml">per unit in the DFM cost model</span></div><div class="m"><span class="mv">0.004″</span><span class="ml">snap-fit clearance on the FDM prototype</span></div><div class="m"><span class="mv">1.30″ OD</span><span class="ml">beats the 1.25″ choke test</span></div><div class="m"><span class="mv">6 parts</span><span class="ml">designed for straight-pull molds</span></div></div>
-  <div class="dbody">
-    <div class="dtext">
-      <p class="lede">A six-part ABS <b>Happy Meal toy designed for injection molding</b>: snap-fit, no batteries, under $0.36 per unit against the course's $0.50 material-plus-cycle-time cost cap, safe for ages 4 to 8. On a team of four over a 1.5-week sprint I owned the nose cone and the decorative flame, and I drove the design-for-manufacturing decisions that made the whole toy <b>moldable in a straight-pull tool</b>.</p>
-      <h3>Motivation</h3><p>An EGR 121 DFM challenge with hard gates. Every part has to beat the 1.25″ choke threshold, snap onto the cylinder body, mold without side-actions, and land under the course's per-unit cost model.</p>
-      <h3>My role</h3><p>I owned the nose cone and the decorative flame through three-plus print iterations each, then led the DFM decisions across the assembly.</p>
-      <h3>Technical approach</h3><p><b>Tolerancing.</b> The snap-fit is a 0.250″ peg into a 0.254″ hole. Worst-case stack-up on ±0.002″ molding tolerances gives 0.000″ minimum clearance (line-to-line) and 0.008″ maximum. The FDM prototype measured 0.004″ and confirmed the fit geometry, though printed tolerances do not stand in for molded ones.</p><p><b>DFM decisions.</b> I scaled every part to 1.30″ OD after early prints failed the choke test. I removed the cylinder window that needed mold side-actions and replaced it with a decorative sticker at zero tooling cost. I standardized wall thickness at 0.03–0.10″ to prevent sink and warp, and enlarged the flame-joint fillet after the first version snapped.</p><p><b>What I would do differently.</b> I abandoned a split-cylinder concept once printer tolerances made assembly impossible. The lesson I carry forward: run the DFM review before the first print.</p>
-      
-    </div>
-    <div class="dfigs"><figure class="hero"><img src="assets/rocket_exploded.jpg" alt=""><figcaption>Exploded view of the six-part assembly: nose cone, flame, cylinder body, rocket bottom, compression plate, and moon base.</figcaption></figure><figure class=""><img src="assets/rocket_drawings.png" alt=""><figcaption>Sheets from the part drawing package: dimensioned views with section cuts and hole callouts specifying the parts for molding.</figcaption></figure><figure class="small"><img src="assets/rocket_toy.jpg" alt=""><figcaption>The printed prototype as presented at the EGR 121 showcase.</figcaption></figure></div>
-  </div>
-  <div class="pager"><button data-open="p03">&larr; Plantogachi</button><button data-open="p05">Sunflower Seed Shelling Machine &rarr;</button></div>
-</div></dialog><dialog id="p05"><div class="dlg">
-  <form method="dialog"><button class="x" aria-label="Close">&times;</button></form>
-  <div class="dn">DWG 05</div>
-  <h2>Sunflower Seed Shelling Machine <span>Hand-Powered Mechanism</span></h2>
-  <div class="pmeta">Team Engineer · EGR 121, Duke University · Spring 2026</div>
-  <div class="metrics"><div class="m"><span class="mv">Fastest</span><span class="ml">of the 4 EGR 121 course sections</span></div><div class="m"><span class="mv">41 kernels</span><span class="ml">clean, in a 3-min run</span></div><div class="m"><span class="mv">13.7 /min</span><span class="ml">clean-kernel throughput</span></div><div class="m"><span class="mv">6 iters</span><span class="ml">printed roller versions</span></div></div>
-  <div class="dbody">
-    <div class="dtext">
-      <p class="lede">I led the crushing mechanism for <b>a hand-cranked machine that shells sunflower seeds</b>: roller geometry, the inter-roller gap, the funnel, and the drive train. My best three-minute run produced <b>41 clean kernels from 68 seeds fed (27 lost to shell damage) at 13.7 kernels per minute, the fastest machine across all four course sections</b>, after about six printed roller versions and four funnel geometries.</p>
-      <h3>Motivation</h3><p>An EGR 121 build challenge: separate edible kernels from shells by hand, with a mechanism that survives repeated cranking and does not crush the kernels it frees.</p>
-      <h3>My role</h3><p>I led the crushing mechanism and drive system end to end, from roller geometry through the gear train and the kernel/shell separation stage.</p>
-      <h3>Technical approach</h3><p><b>Roller and feed.</b> Vertical seed orientation forces the shell to fracture along its natural seam before the kernel compresses. Early horizontal feeds crushed most of the kernels. Ridged roller slots at a 0.253″ gap concentrate stress on the brittle shell; smooth rollers damaged kernels and serrated rollers jammed.</p><p><b>Drive train.</b> A 9:1 gear reduction runs from crank to rollers, after the earlier 1:1 design snapped the printed shaft. An X-shaped key plus CA adhesive ties the crank to the shaft.</p><p><b>Separation.</b> A narrow straight funnel enforces vertical orientation on its own, replacing a hopper-and-stopper that kept jamming. A perforated hand-shaken sifter plate separates kernels from shells, after a powered-fan prototype failed even at full drill speed.</p><p><b>What I would do differently.</b> I found the 0.253″ gap by printing six roller versions and feeding seeds through each, when a bench measurement of shell fracture force and kernel crush strength would have set the gap before the first print. The machine still wastes 27 of every 68 seeds, and I never instrumented the crushing zone, so I cannot attribute that loss to gap variation, feed angle, or seed size spread. My next build measures the force, grades the seeds by size, and sets the gap from data. I would also size the drive shaft from a torque calculation instead of learning the 1:1 limit when it snapped.</p>
-      
-    </div>
-    <div class="dfigs"><figure class="wide"><img src="assets/seed_built.jpg" alt=""><figcaption>The built machine, two views: printed rollers, gear set, crank, and the hand-shaken sifter tray.</figcaption></figure><figure class=""><img src="assets/seed_cad.jpg" alt=""><figcaption>Final assembly: ridged rollers, a 9:1 gear drive, a hand crank, and laser-cut wood side panels.</figcaption></figure><figure class=""><img src="assets/seed_crush.jpg" alt=""><figcaption>Crushing-zone detail: the roller pair, the seed chute, and the gap the shell is forced through.</figcaption></figure></div>
-  </div>
-  <div class="pager"><button data-open="p04">&larr; McRocket</button><button data-open="p06">Tiger Enrichment Device &rarr;</button></div>
-</div></dialog><dialog id="p06"><div class="dlg">
-  <form method="dialog"><button class="x" aria-label="Close">&times;</button></form>
-  <div class="dn">DWG 06</div>
-  <h2>Tiger Enrichment Device <span>North Carolina Zoo, Client Project</span></h2>
-  <div class="pmeta">Team Engineer · EGR 121 Design POD (Duke's engineering project studio) · Fall 2025 · Client: Cathy Mingee, North Carolina Zoo</div>
-  <div class="metrics"><div class="m"><span class="mv">400 lb</span><span class="ml">static load, no damage</span></div><div class="m"><span class="mv">5 min</span><span class="ml">water-soak, full function held</span></div><div class="m"><span class="mv">6 mL</span><span class="ml">scent dosed every 5 h</span></div><div class="m"><span class="mv">Zero</span><span class="ml">damage or function loss, full test campaign</span></div></div>
-  <div class="dbody">
-    <div class="dtext">
-      <p class="lede">For the North Carolina Zoo's new tiger exhibit, my team of four built <b>a rope-wrapped enrichment device that gives the animal physical and olfactory stimulation</b>. A ball rolls on a track inside the frame, and a scent ball draws the tiger in. I handled the structural frame and the electronics. The device <b>passed a 400 lb static load test and a five-minute water-soak with no loss of function</b>.</p>
-      <h3>Motivation</h3><p>A client deliverable for a zoo keeper. The device has to survive a tiger, weather the outdoors, release scent on a schedule, and let keepers swap the ball without tools.</p>
-      <h3>My role</h3><p>I designed the PVC spine, the track system, and the ball-change mechanism, and I built the actuating Arduino scent system.</p>
-      <h3>Technical approach</h3><p><b>Structure & testing.</b> I stacked 40 lb bags to 400 lb total on the frame with no joint or structural damage, then hosed the device for over five minutes with full function retained.</p><p><b>Scent electronics.</b> A 3D-printed housing carries an Arduino Nano and a solenoid valve that doses 6 mL of essential oil every five hours. The battery compartment sits enclosed and shielded from impact.</p><p><b>What I would do differently.</b> The tool-free quick-release pin missed its 2-minute target and ran inconsistently. My next revision machines the pin to a repeatable geometry, measures extraction force, and adds internal foam damping to the ball housing.</p>
-      
-    </div>
-    <div class="dfigs"><figure class="hero"><img src="assets/tiger_frame.jpg" alt=""><figcaption>The rope-wrapped PVC frame. The side panel releases for ball changes; the scent valve and enclosed electronics bay are labeled.</figcaption></figure><figure class=""><img src="assets/tiger_ball.jpg" alt=""><figcaption>The 3D-printed scent ball housing the Arduino Nano and solenoid valve, shown in section.</figcaption></figure></div>
-  </div>
-  <div class="pager"><button data-open="p05">&larr; Sunflower Seed Shelling Machine</button><button data-open="p01">Duke Solar Sail &rarr;</button></div>
-</div></dialog>
-<script>
-const $=id=>document.getElementById(id);
-document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>{document.querySelectorAll('dialog[open]').forEach(d=>d.close());$(b.dataset.open).showModal();history.replaceState(null,'','#'+b.dataset.open)});
-document.querySelectorAll('dialog').forEach(d=>{
-  d.onclick=e=>{if(e.target===d)d.close()};
-  d.onclose=()=>{if(!document.querySelector('dialog[open]'))history.replaceState(null,'',location.pathname)};
-  d.querySelectorAll('a[href^="#"]').forEach(a=>a.onclick=()=>d.close());
-});
-const h=$(location.hash.slice(1));if(h&&h.tagName==='DIALOG')h.showModal();
-// sail beam trade: same formula and constants as tube() in build.py
-const E=230000000000.0,RHO=1600,L=0.5,FLOOR=3.8,PICK=[8.0,0.15];
-function calc(){
-  const od=+$('od').value,t=+$('wt').value,D=od/1e3,d=(od-2*t)/1e3;
-  const ei=E*Math.PI/64*(D**4-d**4),g=RHO*Math.PI/4*(D**2-d**2)*L*1e3,m=ei/FLOOR-1;
-  $('odv').value=od.toFixed(1);$('wtv').value=t.toFixed(2);
-  $('ei').textContent=ei.toFixed(2);$('g').textContent=g.toFixed(2);
-  $('bar').style.width=Math.min(ei/(2*FLOOR),1)*100+'%';
-  const v=$('verdict');v.className='verdict '+(m>=0?'ok':'bad');
-  v.textContent=(m>=0?'Clears':'Fails')+' the 3.8 N·m² floor ('+(m>=0?'+':'')+(m*100).toFixed(0)+'%)'
-    +(od===PICK[0]&&t===PICK[1]?' · this is the tube I chose':'');
-}
-['od','wt'].forEach(i=>$(i).oninput=calc);calc();
-// transit nav: fill the dot for the sheet in the middle of the screen
-const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.hash==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
-document.querySelectorAll('header[id],section[id]').forEach(s=>spy.observe(s));
-// React Bits-style effects in plain JS, all skipped under prefers-reduced-motion
-const calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const hero=document.querySelector('header.hero');
-hero.onpointermove=e=>{const r=hero.getBoundingClientRect();hero.style.setProperty('--mx',e.clientX-r.left+'px');hero.style.setProperty('--my',e.clientY-r.top+'px')};
-document.querySelectorAll('.card').forEach(c=>c.onpointermove=e=>{const r=c.getBoundingClientRect();c.style.setProperty('--cx',e.clientX-r.left+'px');c.style.setProperty('--cy',e.clientY-r.top+'px')});
-if(!calm){
-  const h1=document.querySelector('h1'),txt=h1.textContent,G='#%&@$01<>/';let f=0;  // decrypted text
-  const t=setInterval(()=>{h1.textContent=[...txt].map((ch,i)=>ch===' '||i<f/2?ch:G[Math.random()*G.length|0]).join('');if(++f>txt.length*2){clearInterval(t);h1.textContent=txt}},30);
-  document.querySelectorAll('[data-to]').forEach(b=>{const n=+b.dataset.to,s=b.dataset.suf||'',t0=performance.now();  // count up
-    (function step(t){const k=Math.min((t-t0)/1400,1);b.textContent=Math.round(n*(1-(1-k)**3))+s;if(k<1)requestAnimationFrame(step)})(t0)});
-  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
-  document.querySelectorAll('section .wrap>*').forEach(el=>{el.classList.add('reveal');io.observe(el)});  // scroll reveal
-}
-</script>
+</a></div>
+</div></div></main>
+<footer><div class="wrap"><span>KAREEM ABU SALAH · DURHAM, NC</span>
+  <span><a href="mailto:kareem.abusalah@duke.edu">email</a> · <a href="https://linkedin.com/in/kareem-abu-salah">linkedin</a> · <a href="https://github.com/kareemabusalah">github</a> · <a href="Kareem_Abu_Salah_Portfolio.pdf">pdf</a></span></div></footer>
+<script src="site.js"></script>
 </body></html>

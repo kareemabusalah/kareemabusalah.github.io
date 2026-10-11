@@ -1,0 +1,32 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sunflower Seed Shelling Machine · Kareem Abu Salah</title>
+<meta name="description" content="Mechanical engineering and CS at Duke. Structures, enclosures, DFM, and the firmware that runs them.">
+<meta property="og:title" content="Sunflower Seed Shelling Machine · Kareem Abu Salah">
+<meta property="og:image" content="../assets/sail_iso.png">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&family=Newsreader:opsz@6..72&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css"></head><body>
+<nav><div class="wrap"><a href="../index.html">home</a><a href="../work.html" aria-current=page>work</a><a href="../lab.html">lab</a><a href="../about.html">about</a><a href="../life.html">off the clock</a><a href="../contact.html">contact</a></div></nav>
+<main><div class="wrap"><a class="back" href="../work.html">&larr; All work</a>
+<article class="sheetpaper">
+  <div class="dn">DWG 05 · Spring 2026</div>
+  <h1 class="ptitle">Sunflower Seed Shelling Machine <span>Hand-Powered Mechanism</span></h1>
+  <div class="pmeta">Team Engineer · EGR 121, Duke University · Spring 2026</div>
+  <div class="metrics"><div class="m"><span class="mv">Fastest</span><span class="ml">of the 4 EGR 121 course sections</span></div><div class="m"><span class="mv">41 kernels</span><span class="ml">clean, in a 3-min run</span></div><div class="m"><span class="mv">13.7 /min</span><span class="ml">clean-kernel throughput</span></div><div class="m"><span class="mv">6 iters</span><span class="ml">printed roller versions</span></div></div>
+  <div class="dbody">
+    <div class="dtext">
+      <p class="lede">I led the crushing mechanism for <b>a hand-cranked machine that shells sunflower seeds</b>: roller geometry, the inter-roller gap, the funnel, and the drive train. My best three-minute run produced <b>41 clean kernels from 68 seeds fed (27 lost to shell damage) at 13.7 kernels per minute, the fastest machine across all four course sections</b>, after about six printed roller versions and four funnel geometries.</p>
+      <h3>Motivation</h3><p>An EGR 121 build challenge: separate edible kernels from shells by hand, with a mechanism that survives repeated cranking and does not crush the kernels it frees.</p>
+      <h3>My role</h3><p>I led the crushing mechanism and drive system end to end, from roller geometry through the gear train and the kernel/shell separation stage.</p>
+      <h3>Technical approach</h3><p><b>Roller and feed.</b> Vertical seed orientation forces the shell to fracture along its natural seam before the kernel compresses. Early horizontal feeds crushed most of the kernels. Ridged roller slots at a 0.253″ gap concentrate stress on the brittle shell; smooth rollers damaged kernels and serrated rollers jammed.</p><p><b>Drive train.</b> A 9:1 gear reduction runs from crank to rollers, after the earlier 1:1 design snapped the printed shaft. An X-shaped key plus CA adhesive ties the crank to the shaft.</p><p><b>Separation.</b> A narrow straight funnel enforces vertical orientation on its own, replacing a hopper-and-stopper that kept jamming. A perforated hand-shaken sifter plate separates kernels from shells, after a powered-fan prototype failed even at full drill speed.</p><p><b>What I would do differently.</b> I found the 0.253″ gap by printing six roller versions and feeding seeds through each, when a bench measurement of shell fracture force and kernel crush strength would have set the gap before the first print. The machine still wastes 27 of every 68 seeds, and I never instrumented the crushing zone, so I cannot attribute that loss to gap variation, feed angle, or seed size spread. My next build measures the force, grades the seeds by size, and sets the gap from data. I would also size the drive shaft from a torque calculation instead of learning the 1:1 limit when it snapped.</p>
+      
+    </div>
+    <div class="dfigs"><figure class="wide"><img src="../assets/seed_built.jpg" alt=""><figcaption>The built machine, two views: printed rollers, gear set, crank, and the hand-shaken sifter tray.</figcaption></figure><figure class=""><img src="../assets/seed_cad.jpg" alt=""><figcaption>Final assembly: ridged rollers, a 9:1 gear drive, a hand crank, and laser-cut wood side panels.</figcaption></figure><figure class=""><img src="../assets/seed_crush.jpg" alt=""><figcaption>Crushing-zone detail: the roller pair, the seed chute, and the gap the shell is forced through.</figcaption></figure></div>
+  </div>
+  <div class="pager"><a href="mcrocket.html">&larr; McRocket</a><a href="tiger-enrichment-device.html">Tiger Enrichment Device &rarr;</a></div>
+</article></div></main>
+<footer><div class="wrap"><span>KAREEM ABU SALAH · DURHAM, NC</span>
+  <span><a href="mailto:kareem.abusalah@duke.edu">email</a> · <a href="https://linkedin.com/in/kareem-abu-salah">linkedin</a> · <a href="https://github.com/kareemabusalah">github</a> · <a href="../Kareem_Abu_Salah_Portfolio.pdf">pdf</a></span></div></footer>
+<script src="../site.js"></script>
+</body></html>

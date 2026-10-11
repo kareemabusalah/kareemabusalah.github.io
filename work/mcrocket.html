@@ -1,0 +1,32 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>McRocket · Kareem Abu Salah</title>
+<meta name="description" content="Mechanical engineering and CS at Duke. Structures, enclosures, DFM, and the firmware that runs them.">
+<meta property="og:title" content="McRocket · Kareem Abu Salah">
+<meta property="og:image" content="../assets/sail_iso.png">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&family=Newsreader:opsz@6..72&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css"></head><body>
+<nav><div class="wrap"><a href="../index.html">home</a><a href="../work.html" aria-current=page>work</a><a href="../lab.html">lab</a><a href="../about.html">about</a><a href="../life.html">off the clock</a><a href="../contact.html">contact</a></div></nav>
+<main><div class="wrap"><a class="back" href="../work.html">&larr; All work</a>
+<article class="sheetpaper">
+  <div class="dn">DWG 04 · Spring 2026</div>
+  <h1 class="ptitle">McRocket <span>Happy Meal Toy Designed for Injection Molding</span></h1>
+  <div class="pmeta">Team Engineer, Nose Cone & Flame · EGR 121, Duke University · Spring 2026</div>
+  <div class="metrics"><div class="m"><span class="mv">< $0.36</span><span class="ml">per unit in the DFM cost model</span></div><div class="m"><span class="mv">0.004″</span><span class="ml">snap-fit clearance on the FDM prototype</span></div><div class="m"><span class="mv">1.30″ OD</span><span class="ml">beats the 1.25″ choke test</span></div><div class="m"><span class="mv">6 parts</span><span class="ml">designed for straight-pull molds</span></div></div>
+  <div class="dbody">
+    <div class="dtext">
+      <p class="lede">A six-part ABS <b>Happy Meal toy designed for injection molding</b>: snap-fit, no batteries, under $0.36 per unit against the course's $0.50 material-plus-cycle-time cost cap, safe for ages 4 to 8. On a team of four over a 1.5-week sprint I owned the nose cone and the decorative flame, and I drove the design-for-manufacturing decisions that made the whole toy <b>moldable in a straight-pull tool</b>.</p>
+      <h3>Motivation</h3><p>An EGR 121 DFM challenge with hard gates. Every part has to beat the 1.25″ choke threshold, snap onto the cylinder body, mold without side-actions, and land under the course's per-unit cost model.</p>
+      <h3>My role</h3><p>I owned the nose cone and the decorative flame through three-plus print iterations each, then led the DFM decisions across the assembly.</p>
+      <h3>Technical approach</h3><p><b>Tolerancing.</b> The snap-fit is a 0.250″ peg into a 0.254″ hole. Worst-case stack-up on ±0.002″ molding tolerances gives 0.000″ minimum clearance (line-to-line) and 0.008″ maximum. The FDM prototype measured 0.004″ and confirmed the fit geometry, though printed tolerances do not stand in for molded ones.</p><p><b>DFM decisions.</b> I scaled every part to 1.30″ OD after early prints failed the choke test. I removed the cylinder window that needed mold side-actions and replaced it with a decorative sticker at zero tooling cost. I standardized wall thickness at 0.03–0.10″ to prevent sink and warp, and enlarged the flame-joint fillet after the first version snapped.</p><p><b>What I would do differently.</b> I abandoned a split-cylinder concept once printer tolerances made assembly impossible. The lesson I carry forward: run the DFM review before the first print.</p>
+      
+    </div>
+    <div class="dfigs"><figure class="hero"><img src="../assets/rocket_exploded.jpg" alt=""><figcaption>Exploded view of the six-part assembly: nose cone, flame, cylinder body, rocket bottom, compression plate, and moon base.</figcaption></figure><figure class=""><img src="../assets/rocket_drawings.png" alt=""><figcaption>Sheets from the part drawing package: dimensioned views with section cuts and hole callouts specifying the parts for molding.</figcaption></figure><figure class="small"><img src="../assets/rocket_toy.jpg" alt=""><figcaption>The printed prototype as presented at the EGR 121 showcase.</figcaption></figure></div>
+  </div>
+  <div class="pager"><a href="plantogachi.html">&larr; Plantogachi</a><a href="sunflower-seed-shelling-machine.html">Sunflower Seed Shelling Machine &rarr;</a></div>
+</article></div></main>
+<footer><div class="wrap"><span>KAREEM ABU SALAH · DURHAM, NC</span>
+  <span><a href="mailto:kareem.abusalah@duke.edu">email</a> · <a href="https://linkedin.com/in/kareem-abu-salah">linkedin</a> · <a href="https://github.com/kareemabusalah">github</a> · <a href="../Kareem_Abu_Salah_Portfolio.pdf">pdf</a></span></div></footer>
+<script src="../site.js"></script>
+</body></html>
