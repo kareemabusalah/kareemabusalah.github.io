@@ -18,7 +18,7 @@ b,strong{color:#fff;font-weight:400}
 .wrap{max-width:1160px;margin:0 auto;padding:0 26px}
 .px{image-rendering:pixelated}
 /* tabs */
-nav.tabs{position:sticky;top:0;z-index:20;background:#04050df0;border-bottom:3px solid var(--g)}
+nav.tabs{position:sticky;top:0;z-index:60;background:#04050df0;border-bottom:3px solid var(--g)}
 nav.tabs .wrap{display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center;min-height:58px;padding-top:8px;padding-bottom:8px}
 nav.tabs .me{font:10px var(--px);color:var(--g);margin-right:auto;text-decoration:none;letter-spacing:.05em}
 nav.tabs a.t{font:10px var(--px);color:var(--dim);text-decoration:none;padding:8px 9px;border:2px solid transparent;position:relative}
