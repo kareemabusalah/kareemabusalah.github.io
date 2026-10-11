@@ -3,7 +3,7 @@
   'use strict';
   var mm = function (q) { return !!(window.matchMedia && matchMedia(q).matches); };
   var reduced = window.KAS_CALM != null ? window.KAS_CALM : mm('(prefers-reduced-motion: reduce)');  // the site's FX toggle wins
-  var fine = mm('(any-pointer: fine)') && mm('(any-hover: hover)');  // touch laptops have a mouse too
+  var fine = true;  // touch laptops can report no fine pointer even with a touchpad; these effects only react to pointer movement anyway
   var GLYPHS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&<>/*+';
   var rnd = function (s) { return s[(Math.random() * s.length) | 0]; };
   var css = function (v, d) {

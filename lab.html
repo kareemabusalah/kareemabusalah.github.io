@@ -4,12 +4,12 @@
 <meta name="description" content="Mechanical engineering and CS at Duke. Structures, enclosures, DFM, and the firmware that runs them.">
 <meta property="og:title" content="Lab · Kareem Abu Salah">
 <meta property="og:image" content="assets/sail_iso.png">
-<script>!function(){var s=null;try{s=localStorage.getItem("kas_fx")}catch(e){}window.KAS_CALM=s?s==="off":matchMedia("(prefers-reduced-motion: reduce)").matches;if(window.KAS_CALM)document.documentElement.classList.add("calm")}()</script>
+<script>!function(){var s=null;try{s=localStorage.getItem("kas_fx")}catch(e){}window.KAS_CALM=s==="off";if(window.KAS_CALM)document.documentElement.classList.add("calm")}()</script>
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"><link rel="icon" href="favicon.ico" sizes="any"><link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=4797d265"><link rel="stylesheet" href="fx.css?v=4797d265"></head><body>
-<nav class="tabs"><div class="wrap"><a class="me" href="index.html">KAREEM.EXE</a><a class="t" href="index.html">home</a><a class="t" href="work.html">work</a><a class="t" href="lab.html" aria-current=page>lab</a><a class="t" href="play.html">play</a><a class="t" href="about.html">about</a><a class="t" href="resume.html">resume</a><a class="t" href="interests.html">interests</a><a class="t" href="contact.html">contact</a><button class="fxbtn" id="fxbtn" type="button" title="Turn animations on or off">✦ FX</button><span class="alien" id="alienscore" hidden></span></div></nav>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=8eed8c34"><link rel="stylesheet" href="fx.css?v=8eed8c34"></head><body>
+<nav class="tabs"><div class="wrap"><a class="me" href="index.html">KAREEM.EXE</a><a class="t" href="index.html">home</a><a class="t" href="work.html">work</a><a class="t" href="lab.html" aria-current=page>lab</a><a class="t" href="play.html">play</a><a class="t" href="about.html">about</a><a class="t" href="resume.html">resume</a><a class="t" href="interests.html">interests</a><a class="t" href="contact.html">contact</a><button class="fxbtn" id="fxbtn" type="button" data-hint="animations on / off" data-hint-pos="bottom" title="Turn animations on or off">✦ FX</button><span class="alien" id="alienscore" hidden></span></div></nav>
 <main><section><div class="wrap">
   <div class="phd"><span class="sheet">SECTOR 3/8</span><h2 class="title">THE LAB</h2><p>A pocket version of Plantogachi, running the app's real game loop.</p></div>
   <div class="lab rv" id="plantogachi">
@@ -25,9 +25,9 @@
         <div class="bars"><div><span>MOIST</span><span class="b"><i id="b_moist"></i></span><span id="v_moist"></span></div><div><span>SUN</span><span class="b"><i id="b_sun"></i></span><span id="v_sun"></span></div><div><span>COMFY</span><span class="b"><i id="b_comf"></i></span><span id="v_comf"></span></div><div><span>HAPPY</span><span class="b"><i id="b_happy"></i></span><span id="v_happy"></span></div><div><span>HEALTH</span><span class="b"><i id="b_hp"></i></span><span id="v_hp"></span></div></div>
         <div style="margin-top:8px;text-align:right" id="tday"></div>
       </div>
-      <div class="gbbtns"><button id="tpet" type="button">PET</button><button id="twater" type="button">WATER</button><button id="tplay" type="button">&#9654; RUN</button></div></div>
+      <div class="gbbtns" data-hint="pet it, water it, run time" data-hint-pos="bottom"><button id="tpet" type="button">PET</button><button id="twater" type="button">WATER</button><button id="tplay" type="button">&#9654; RUN</button></div></div>
       <div>
-        <div class="species"><button data-species="Monstera" aria-pressed="true" type="button">MONSTERA</button><button data-species="Cactus" aria-pressed="false" type="button">CACTUS</button><button data-species="SnakePlant" aria-pressed="false" type="button">SNAKE PLANT</button></div>
+        <div class="species" data-hint="pick a plant, then drag the sensor sliders"><button data-species="Monstera" aria-pressed="true" type="button">MONSTERA</button><button data-species="Cactus" aria-pressed="false" type="button">CACTUS</button><button data-species="SnakePlant" aria-pressed="false" type="button">SNAKE PLANT</button></div>
         <label>SOIL MOISTURE: <output id="tm_v"></output> %<input type="range" id="tm" min="0" max="100" value="80"></label>
         <label>LIGHT: <output id="tl_v"></output> lux<input type="range" id="tl" min="0" max="5000" step="50" value="2400"></label>
         <label>TEMPERATURE: <output id="tt_v"></output> &deg;F<input type="range" id="tt" min="40" max="105" value="74"></label>
@@ -41,5 +41,5 @@
 </div></section></main>
 <footer><div class="wrap"><span>&copy; KAREEM ABU SALAH · DURHAM, NC · END OF TRANSMISSION</span>
   <span><a href="mailto:kareem.abusalah@duke.edu">EMAIL</a> · <a href="https://linkedin.com/in/kareem-abu-salah">LINKEDIN</a> · <a href="https://github.com/kareemabusalah">GITHUB</a> · <a href="Kareem_Abu_Salah_Resume.pdf">RESUME</a></span></div></footer>
-<script src="stars.js?v=4797d265"></script><script src="site.js?v=4797d265"></script><script src="planto.js?v=4797d265"></script><script src="fx.js?v=4797d265" defer></script>
+<script src="stars.js?v=8eed8c34"></script><script src="site.js?v=8eed8c34"></script><script src="planto.js?v=8eed8c34"></script><script src="fx.js?v=8eed8c34" defer></script><script src="hints.js?v=8eed8c34" defer></script><script src="cursor.js?v=8eed8c34" defer></script>
 </body></html>
