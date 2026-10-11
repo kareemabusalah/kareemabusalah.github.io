@@ -263,7 +263,7 @@
 .ast-log{list-style:none;margin:0;padding:.4em .8em;text-align:left;font-size:clamp(15px,1.8vw,20px);line-height:1.2;background:#0d0b24;border:2px solid #5b54a8}
 .ast-log a{color:#7ee8ff;margin-left:.4em}
 .ast-log .ast-unk{color:#5a6a8a}
-.ast-toasts{position:absolute;right:8px;top:34px;z-index:4;width:min(280px,62%);display:flex;flex-direction:column;gap:6px;pointer-events:none}
+.ast-toasts{max-width:calc(70vh * 1.6);margin:10px auto 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px;min-height:72px}  /* below the screen, never over the play area */
 .ast-toast{pointer-events:auto;display:flex;gap:8px;align-items:flex-start;background:#0d0b24;border:2px solid #7ee8ff;box-shadow:3px 3px 0 #05040f;padding:6px 8px;font-size:17px;line-height:1.1;transition:opacity .4s,transform .4s}
 .ast-toast.ast-out{opacity:0;transform:translateX(20px)}
 .ast-toast small{display:block;margin-bottom:3px;font:8px/1.3 "Press Start 2P",monospace;color:#7ee8ff}
@@ -305,8 +305,8 @@
     h('div', null, tbtn('◀', 'l', 'rotate left'), tbtn('▶', 'r', 'rotate right')),
     h('div', null, tbtn('▲', 't', 'thrust'), tbtn('FIRE', 'f', 'fire', 'ast-fire')));
   touchEl.hidden = true;
-  const wrap = h('div', { class: 'ast-wrap' }, cv, hud, fxBar, ov, toasts, touchEl);
-  root.append(wrap);
+  const wrap = h('div', { class: 'ast-wrap' }, cv, hud, fxBar, ov, touchEl);
+  root.append(wrap, toasts);
 
   // ---------- sound (off by default, generated) ----------
   let snd = false, ac = null, noiseBuf = null;
