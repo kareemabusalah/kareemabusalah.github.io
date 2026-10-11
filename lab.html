@@ -5,29 +5,57 @@
 <meta property="og:title" content="Lab · Kareem Abu Salah">
 <meta property="og:image" content="assets/sail_iso.png">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&family=Newsreader:opsz@6..72&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css"></head><body>
-<nav><div class="wrap"><a href="index.html">home</a><a href="work.html">work</a><a href="lab.html" aria-current=page>lab</a><a href="about.html">about</a><a href="life.html">off the clock</a><a href="contact.html">contact</a></div></nav>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="fx.css"></head><body>
+<nav class="tabs"><div class="wrap"><a class="me" href="index.html">KAREEM.EXE</a><a class="t" href="index.html" data-glitch="home">home</a><a class="t" href="work.html" data-glitch="work">work</a><a class="t" href="lab.html" data-glitch="lab" aria-current=page>lab</a><a class="t" href="about.html" data-glitch="about">about</a><a class="t" href="resume.html" data-glitch="resume">resume</a><a class="t" href="sokaj.html" data-glitch="sokaj">sokaj</a><a class="t" href="lampshade.html" data-glitch="lampshade">lampshade</a><a class="t" href="contact.html" data-glitch="contact">contact</a></div></nav>
 <main><section><div class="wrap">
-  <div class="phd"><span class="sheet">SHEET 03 / 06</span><h2 class="title">The Lab.</h2><p>Each solar sail frame edge is a 0.5 m CFRP tube. It has to clear a flexural-rigidity floor of EI &ge; 3.8 N·m², and every gram costs sail thrust. I swept seven diameter and wall pairs and picked 8.0 &times; 0.15 mm. Drag the sliders to run the same trade.</p></div>
-  <div class="trade">
-    <div>
-      <label>Outer diameter: <output id="odv"></output> mm<input type="range" id="od" min="5" max="12" step="0.1" value="8"></label>
-      <label>Wall thickness: <output id="wtv"></output> mm<input type="range" id="wt" min="0.1" max="0.5" step="0.01" value="0.15"></label>
-      <p class="small">Thin-walled tube, E = 230 GPa, &rho; = 1600 kg/m³: the laminate values that reproduce the design
-        point. Stiffness grows with diameter to the fourth power and mass only with the square, which is why a wide, thin tube wins
-        until the wall gets too thin to roll-wrap or it starts to buckle locally. <a href="work/duke-solar-sail.html">Read the full solar sail case study &rarr;</a></p>
+  <div class="phd"><span class="sheet">STAGE 3-8</span><h2 class="title" data-glitch="THE LAB">THE LAB</h2><p>Two things you can play with: the beam trade behind the solar sail frame, and a pocket version of Plantogachi running the app's real game loop.</p></div>
+  <div class="lab rv" id="trade">
+    <h3>01 · SOLAR SAIL BEAM TRADE</h3>
+    <p style="margin-bottom:20px">Each frame edge is a 0.5 m CFRP tube. It has to clear a flexural-rigidity floor of EI &ge; 3.8 N·m², and every gram costs sail thrust. I swept seven diameter and wall pairs and picked 8.0 &times; 0.15 mm. Run the same trade.</p>
+    <div class="trade">
+      <div>
+        <label>OUTER DIAMETER: <output id="odv"></output> mm<input type="range" id="od" min="5" max="12" step="0.1" value="8"></label>
+        <label>WALL THICKNESS: <output id="wtv"></output> mm<input type="range" id="wt" min="0.1" max="0.5" step="0.01" value="0.15"></label>
+        <p class="small">Thin-walled tube, E = 230 GPa, &rho; = 1600 kg/m³: the laminate values that reproduce the design point. Stiffness grows with diameter to the fourth power and mass only with the square, so a wide, thin tube wins until the wall gets too thin to roll-wrap or starts to buckle locally. <a href="work/duke-solar-sail.html">Full case study &rarr;</a></p>
+      </div>
+      <div class="ro">
+        <div class="small">FLEXURAL RIGIDITY EI</div><div class="big"><span id="ei"></span> N·m²</div>
+        <div class="meter"><i id="bar"></i><s style="left:50%"></s></div>
+        <div class="small">White line = 3.8 N·m² floor</div>
+        <div class="verdict" id="verdict"></div>
+        <div class="small" style="margin-top:16px">MASS PER BEAM</div><div class="big"><span id="g"></span> g</div>
+      </div>
     </div>
-    <div class="ro">
-      <div class="small">Flexural rigidity EI</div><div class="big"><span id="ei"></span> N·m²</div>
-      <div class="meter"><i id="bar"></i><s style="left:50%"></s></div>
-      <div class="small">Yellow line = 3.8 N·m² floor</div>
-      <div class="verdict" id="verdict"></div>
-      <div class="small" style="margin-top:18px">Mass per beam</div><div class="big"><span id="g"></span> g</div>
+  </div>
+  <div class="lab rv" id="plantogachi">
+    <h3>02 · PLANTOGACHI, POCKET EDITION</h3>
+    <p style="margin-bottom:20px">Plantogachi turns a houseplant into a Tamagotchi. This is the app's real game loop, ported from the FastAPI backend: the same reading-to-stats formulas, mood resolver, decay, and XP. The sliders stand in for the ESP32 sensor puck, like the DEV slider in the real app. <a href="work/plantogachi.html">Case study &rarr;</a></p>
+    <div class="tama" id="tama">
+      <div class="gb"><div class="lcd">
+        <div class="lcdtop"><span id="tname"></span><span>LV <b id="tlv" style="color:inherit"></b></span></div>
+        <div class="lat" id="tlatin"></div>
+        <div class="xp"><i id="txp"></i></div>
+        <svg id="tsvg" viewBox="0 0 100 100" role="img" aria-label="Your plant"></svg>
+        <div class="mood" id="tmood"></div>
+        <div class="bars"><div><span>MOIST</span><span class="b"><i id="b_moist"></i></span><span id="v_moist"></span></div><div><span>SUN</span><span class="b"><i id="b_sun"></i></span><span id="v_sun"></span></div><div><span>COMFY</span><span class="b"><i id="b_comf"></i></span><span id="v_comf"></span></div><div><span>HAPPY</span><span class="b"><i id="b_happy"></i></span><span id="v_happy"></span></div><div><span>HEALTH</span><span class="b"><i id="b_hp"></i></span><span id="v_hp"></span></div></div>
+        <div style="margin-top:8px;text-align:right" id="tday"></div>
+      </div>
+      <div class="gbbtns"><button id="tpet" type="button">PET</button><button id="twater" type="button">WATER</button><button id="tplay" type="button">&#9654; RUN</button></div></div>
+      <div>
+        <div class="species"><button data-species="Monstera" aria-pressed="true" type="button">MONSTERA</button><button data-species="Cactus" aria-pressed="false" type="button">CACTUS</button><button data-species="SnakePlant" aria-pressed="false" type="button">SNAKE PLANT</button></div>
+        <label>SOIL MOISTURE: <output id="tm_v"></output> %<input type="range" id="tm" min="0" max="100" value="80"></label>
+        <label>LIGHT: <output id="tl_v"></output> lux<input type="range" id="tl" min="0" max="5000" step="50" value="2400"></label>
+        <label>TEMPERATURE: <output id="tt_v"></output> &deg;F<input type="range" id="tt" min="40" max="105" value="74"></label>
+        <label>HUMIDITY: <output id="th_v"></output> %<input type="range" id="th" min="0" max="100" value="55"></label>
+        <div class="btns" style="margin-top:6px"><button class="btn o" id="tday1" type="button" data-magnet>+1 DAY</button><button class="btn o" id="tnew" type="button" data-magnet>NEW PLANT</button></div>
+        <p class="dead" id="tdead" hidden>YOUR PLANT DIED. HIT NEW PLANT.</p>
+        <p class="small" style="margin-top:14px">RUN plays one hour per tick: soil dries over the species' watering interval (7 days for a monstera, 14 for a cactus or snake plant), and a happy plant earns 5 XP a tick. Move a slider to send a fresh reading.</p>
+      </div>
     </div>
   </div>
 </div></section></main>
-<footer><div class="wrap"><span>KAREEM ABU SALAH · DURHAM, NC</span>
-  <span><a href="mailto:kareem.abusalah@duke.edu">email</a> · <a href="https://linkedin.com/in/kareem-abu-salah">linkedin</a> · <a href="https://github.com/kareemabusalah">github</a> · <a href="Kareem_Abu_Salah_Portfolio.pdf">pdf</a></span></div></footer>
-<script src="site.js"></script>
+<footer><div class="wrap"><span>&copy; KAREEM ABU SALAH · DURHAM, NC · PRESS START</span>
+  <span><a href="mailto:kareem.abusalah@duke.edu">EMAIL</a> · <a href="https://linkedin.com/in/kareem-abu-salah">LINKEDIN</a> · <a href="https://github.com/kareemabusalah">GITHUB</a> · <a href="Kareem_Abu_Salah_Resume.pdf">RESUME</a></span></div></footer>
+<script src="site.js"></script><script src="planto.js"></script><script src="fx.js" defer></script>
 </body></html>

@@ -10,22 +10,12 @@ if($('od')){
     $('ei').textContent=ei.toFixed(2);$('g').textContent=g.toFixed(2);
     $('bar').style.width=Math.min(ei/(2*FLOOR),1)*100+'%';
     const v=$('verdict');v.className='verdict '+(m>=0?'ok':'bad');
-    v.textContent=(m>=0?'Clears':'Fails')+' the 3.8 N·m² floor ('+(m>=0?'+':'')+(m*100).toFixed(0)+'%)'
-      +(od===PICK[0]&&t===PICK[1]?' · this is the tube I chose':'');
+    v.textContent=(m>=0?'CLEARS':'FAILS')+' the 3.8 N·m² floor ('+(m>=0?'+':'')+(m*100).toFixed(0)+'%)'
+      +(od===PICK[0]&&t===PICK[1]?' · the tube I chose':'');
   };
   ['od','wt'].forEach(i=>$(i).oninput=calc);calc();
 }
-// React Bits-style effects in plain JS, all skipped under prefers-reduced-motion
-const calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const hero=document.querySelector('.hero');
-if(hero)hero.onpointermove=e=>{const r=hero.getBoundingClientRect();hero.style.setProperty('--mx',e.clientX-r.left+'px');hero.style.setProperty('--my',e.clientY-r.top+'px')};
-document.querySelectorAll('.card').forEach(c=>c.onpointermove=e=>{const r=c.getBoundingClientRect();c.style.setProperty('--cx',e.clientX-r.left+'px');c.style.setProperty('--cy',e.clientY-r.top+'px')});
-if(!calm){
-  const h=document.querySelector('.hey .scr');  // decrypted text
-  if(h){const txt=h.textContent,G='#%&@$01<>/';let f=0;
-    const t=setInterval(()=>{h.textContent=[...txt].map((ch,i)=>ch===' '||i<f/2?ch:G[Math.random()*G.length|0]).join('');if(++f>txt.length*2){clearInterval(t);h.textContent=txt}},30)}
-  document.querySelectorAll('[data-to]').forEach(b=>{const n=+b.dataset.to,s=b.dataset.suf||'',t0=performance.now();  // count up
-    (function step(t){const k=Math.min((t-t0)/1400,1);b.textContent=Math.round(n*(1-(1-k)**3))+s;if(k<1)requestAnimationFrame(step)})(t0)});
-  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
-  document.querySelectorAll('.grid>*,.ints>*,.cols>*,.skills>*').forEach(el=>{el.classList.add('reveal');io.observe(el)});  // scroll reveal
-}
+// band videos load YouTube only when clicked
+document.querySelectorAll('[data-yt]').forEach(b=>b.onclick=()=>{
+  b.outerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+b.dataset.yt+'?autoplay=1" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+});
