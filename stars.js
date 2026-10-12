@@ -1,5 +1,5 @@
 // Pixel space behind every page: starfield, a sun, planets, a satellite, shooting stars, and aliens you can click to pop.
-// Drawn on a low-res canvas scaled up crisp. Static scene (no movement, no aliens) when window.KAS_CALM is set.
+// Drawn on a low-res canvas scaled up crisp. Hidden by CSS when interactive mode is off (html.calm).
 (() => {
   const cv = document.createElement('canvas');
   cv.className = 'stars';

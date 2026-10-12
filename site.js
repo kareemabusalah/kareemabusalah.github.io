@@ -1,8 +1,8 @@
 
 const $=id=>document.getElementById(id);
-// FX toggle: remembers the choice and overrides the OS reduce-motion setting
+// Interactive toggle: remembers the choice and overrides the OS reduce-motion setting. Off = plain, still page.
 if($('fxbtn')){
-  $('fxbtn').textContent='✦ FX '+(window.KAS_CALM?'OFF':'ON');
+  $('fxbtn').textContent='✦ INTERACTIVE '+(window.KAS_CALM?'OFF':'ON');
   $('fxbtn').onclick=()=>{try{localStorage.setItem('kas_fx',window.KAS_CALM?'on':'off')}catch(e){}location.reload()};
 }
 // Rotating Text: cycle the words in [data-rotate]
