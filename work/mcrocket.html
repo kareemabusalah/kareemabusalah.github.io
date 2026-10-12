@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png"><link rel="icon" href="../favicon.ico" sizes="any"><link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css?v=8eed8c34"><link rel="stylesheet" href="../fx.css?v=8eed8c34"></head><body>
+<link rel="stylesheet" href="../style.css?v=6a0ae334"><link rel="stylesheet" href="../fx.css?v=6a0ae334"></head><body>
 <nav class="tabs"><div class="wrap"><a class="me" href="../index.html">KAREEM.EXE</a><a class="t" href="../index.html">home</a><a class="t" href="../work.html" aria-current=page>work</a><a class="t" href="../lab.html">lab</a><a class="t" href="../play.html">play</a><a class="t" href="../about.html">about</a><a class="t" href="../resume.html">resume</a><a class="t" href="../interests.html">interests</a><a class="t" href="../contact.html">contact</a><button class="fxbtn" id="fxbtn" type="button" data-hint="animations on / off" data-hint-pos="bottom" title="Turn animations on or off">✦ FX</button><span class="alien" id="alienscore" hidden></span></div></nav>
 <main><div class="wrap"><a class="back" href="../work.html" data-magnet>&larr; ALL WORK</a>
 <article class="sheetpaper">
@@ -28,6 +28,16 @@
       <h3>My role</h3><p>I owned the nose cone and the decorative flame through three-plus print iterations each, then led the DFM decisions across the assembly.</p>
       <h3>Technical approach</h3><p><b>Tolerancing.</b> The snap-fit is a 0.250″ peg into a 0.254″ hole. Worst-case stack-up on ±0.002″ molding tolerances gives 0.000″ minimum clearance (line-to-line) and 0.008″ maximum. The FDM prototype measured 0.004″ and confirmed the fit geometry, though printed tolerances do not stand in for molded ones.</p><p><b>DFM decisions.</b> I scaled every part to 1.30″ OD after early prints failed the choke test. I removed the cylinder window that needed mold side-actions and replaced it with a decorative sticker at zero tooling cost. I standardized wall thickness at 0.03–0.10″ to prevent sink and warp, and enlarged the flame-joint fillet after the first version snapped.</p><p><b>What I would do differently.</b> I abandoned a split-cylinder concept once printer tolerances made assembly impossible. The lesson I carry forward: run the DFM review before the first print.</p>
       
+      <div class="lab toy" id="stack">
+        <h3>TRY IT: SNAP-FIT TOLERANCE STACK</h3>
+        <p class="small">A 0.250&Prime; peg goes into a 0.254&Prime; hole, each molded to &plusmn;0.002&Prime;. Drag either part to the edge of its tolerance, or mold 1,000 random pairs.</p>
+        <label>PEG &Oslash;: <output id="st_pv"></output>&Prime;<input type="range" id="st_p" min="0.248" max="0.252" step="0.0005" value="0.25"></label>
+        <label>HOLE &Oslash;: <output id="st_hv"></output>&Prime;<input type="range" id="st_h" min="0.252" max="0.256" step="0.0005" value="0.254"></label>
+        <p class="big">CLEARANCE <output id="st_c"></output>&Prime;</p>
+        <canvas id="st_cv" width="640" height="220" aria-label="Snap-fit clearance"></canvas>
+        <div class="btns" style="margin-top:12px"><button class="btn o" id="st_roll" type="button" data-magnet>MOLD 1,000 PAIRS</button></div>
+        <p class="small" id="st_note" style="margin-top:12px"></p>
+      </div>
     </div>
     <div class="dfigs"><figure class="hero"><img src="../assets/rocket_exploded.jpg" alt=""><figcaption>Exploded view of the six-part assembly: nose cone, flame, cylinder body, rocket bottom, compression plate, and moon base.</figcaption></figure><figure class=""><img src="../assets/rocket_drawings.png" alt=""><figcaption>Sheets from the part drawing package: dimensioned views with section cuts and hole callouts specifying the parts for molding.</figcaption></figure><figure class="small"><img src="../assets/rocket_toy.jpg" alt=""><figcaption>The printed prototype as presented at the EGR 121 showcase.</figcaption></figure></div>
   </div>
@@ -36,5 +46,5 @@
 </article></div></main>
 <footer><div class="wrap"><span>&copy; KAREEM ABU SALAH · DURHAM, NC · END OF TRANSMISSION</span>
   <span><a href="mailto:kareem.abusalah@duke.edu">EMAIL</a> · <a href="https://linkedin.com/in/kareem-abu-salah">LINKEDIN</a> · <a href="https://github.com/kareemabusalah">GITHUB</a> · <a href="../Kareem_Abu_Salah_Resume.pdf">RESUME</a></span></div></footer>
-<script src="../stars.js?v=8eed8c34"></script><script src="../site.js?v=8eed8c34"></script><script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script><script type="module" src="../viewer.js?v=8eed8c34"></script><script src="../fx.js?v=8eed8c34" defer></script><script src="../hints.js?v=8eed8c34" defer></script><script src="../cursor.js?v=8eed8c34" defer></script>
+<script src="../stars.js?v=6a0ae334"></script><script src="../site.js?v=6a0ae334"></script><script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script><script type="module" src="../viewer.js?v=6a0ae334"></script><script src="../toys.js?v=6a0ae334" defer></script><script src="../fx.js?v=6a0ae334" defer></script><script src="../hints.js?v=6a0ae334" defer></script><script src="../cursor.js?v=6a0ae334" defer></script>
 </body></html>

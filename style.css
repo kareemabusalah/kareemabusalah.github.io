@@ -105,6 +105,8 @@ figcaption{font-size:18px;color:var(--txt);background:var(--panel);padding:8px 1
 .vload{position:absolute;top:44%;left:0;right:0;text-align:center;font-size:10px;color:var(--g);animation:blink 1s steps(1) infinite}
 .v3d.ready .vload{display:none}
 .pxbtn{position:absolute;top:10px;right:10px;font-size:8px;background:#000;color:var(--g);border:2px solid var(--g);padding:6px 8px;cursor:pointer}
+.modebtn{right:auto;left:10px;color:var(--sun);border-color:var(--sun)}
+.toy{margin:30px 0 0}.toy canvas{width:100%;height:auto;display:block;margin-top:10px;background:#05040f;border:2px solid var(--line);image-rendering:pixelated}
 .pager{display:flex;justify-content:space-between;gap:12px;margin-top:40px;padding-top:20px;border-top:3px dashed var(--line);flex-wrap:wrap}
 .pager a{font-size:9px;border:3px solid var(--g);padding:12px 14px;text-decoration:none;line-height:1.6}
 .pager a:hover{background:var(--g);color:#000}
