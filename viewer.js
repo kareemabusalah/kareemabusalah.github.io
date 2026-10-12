@@ -49,7 +49,8 @@ document.querySelectorAll('.v3d').forEach(box => {
     model.position.sub(c);
     scene.add(model);
     if (box.dataset.mode) wobble(model);
-    camera.position.set(r * 1.15, r * 0.85, r * 1.3);
+    const k = +box.dataset.zoom || 1;  // data-zoom="1.7" pulls the camera back for wide, flat parts
+    camera.position.set(r * 1.15 * k, r * 0.85 * k, r * 1.3 * k);
     camera.near = r / 100; camera.far = r * 100; camera.updateProjectionMatrix();
     box.classList.add('ready');
   }, undefined, () => box.querySelector('.vload').textContent = 'MODEL FAILED TO LOAD');
