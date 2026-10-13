@@ -23,7 +23,7 @@ document.querySelectorAll('.v3d').forEach(box => {
   let pixel = true;  // 8-bit look by default; the button switches to full resolution
   const size = () => {
     const w = box.clientWidth, h = canvas.clientHeight;
-    renderer.setPixelRatio(pixel ? 0.4 : devicePixelRatio);
+    renderer.setPixelRatio(pixel ? 0.8 : devicePixelRatio);
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
     camera.updateProjectionMatrix();

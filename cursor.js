@@ -53,7 +53,7 @@
     // exhaust from the tail (down-right of the tip) when moving
     const speed = Math.hypot(vx, vy);
     if (!calm && shown && speed > 2) {
-      for (let i = 0; i < Math.min(3, speed / 6); i++) {
+      for (let i = 0; i < Math.min(1, speed / 10); i++) {
         parts.push({x: x + 18 + Math.random() * 4, y: y + 22 + Math.random() * 4, vx: -vx * 0.05 + Math.random() - 0.3,
                     vy: -vy * 0.05 + Math.random() * 0.8, life: 1, c: Math.random() < 0.5 ? '#ffd23f' : '#ff7a1a'});
       }

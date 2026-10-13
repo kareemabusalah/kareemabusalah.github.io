@@ -20,11 +20,11 @@
   const SAT = sprite(['BBB.....BBB', 'BbB..S..BbB', 'BBBSSWSSBBB', 'BbB..S..BbB', 'BBB.....BBB']);
   const ROCKET = sprite(['...W...', '..WWW..', '..WCW..', '..WWW..', '.RWWWR.', 'RR.W.RR', '..OYO..', '...Y...']);
 
-  let w, h, stars = [], aliens = [], pops = [], meteors = [], nextAlien = 1500, nextMeteor = 2000;
+  let w, h, stars = [], aliens = [], pops = [], meteors = [], nextAlien = 6000, nextMeteor = 8000;
   const seed = () => {
     w = cv.width = Math.ceil(innerWidth / PX);
     h = cv.height = Math.ceil(innerHeight / PX);
-    stars = Array.from({length: Math.round(w * h / 150)}, () => {
+    stars = Array.from({length: Math.round(w * h / 240)}, () => {
       const z = Math.random() < 0.7 ? 1 : Math.random() < 0.75 ? 2 : 3;  // 1 far ... 3 near
       return {x: Math.random() * w, y: Math.random() * h * 3, z, c: STAR_COLORS[Math.random() * STAR_COLORS.length | 0],
               t: Math.random() * 6.28, s: 0.6 + Math.random() * 1.6};
@@ -42,7 +42,7 @@
 
   function sun(t, sy) {
     const cx = (w * 0.6) | 0, cy = (h * 0.1 - sy * 0.04) | 0, r = 7;
-    const flick = calm ? 0 : Math.floor(t / 260) % 2;
+    const flick = calm ? 0 : Math.floor(t / 1200) % 2;
     for (let k = 0; k < 8; k++) {  // rays alternate long and short, swapping every few frames, slowly turning
       const a = k * Math.PI / 4 + (calm ? 0 : t * 0.0002), len = (k + flick) % 2 ? 5 : 3;
       for (let s = r + 2; s < r + 2 + len; s++) px(cx + Math.cos(a) * s, cy + Math.sin(a) * s, s % 2 ? PAL.Y : PAL.y);
@@ -81,7 +81,7 @@
       const x = ((s.x - (calm ? 0 : t * 0.0012 * s.z)) % w + w) % w;
       const y = ((s.y - sy * s.z * 0.15) % (h * 3) + h * 3) % (h * 3);
       if (y > h) continue;
-      const tw = calm ? 1 : 0.55 + 0.45 * Math.sin(t * 0.002 * s.s + s.t);
+      const tw = calm ? 1 : 0.8 + 0.2 * Math.sin(t * 0.001 * s.s + s.t);
       ctx.globalAlpha = (0.5 + 0.2 * s.z) * tw;
       px(x, y, s.c);
       if (s.z === 3 && tw > 0.85) { ctx.globalAlpha *= 0.5; px(x - 1, y, s.c); px(x + 1, y, s.c); px(x, y - 1, s.c); px(x, y + 1, s.c); }
@@ -94,12 +94,12 @@
     ctx.globalAlpha = 1;
     if (calm) return;
 
-    if (t > nextMeteor) { meteors.push({x: Math.random() * w * 0.8, y: Math.random() * h * 0.3, life: 0}); nextMeteor = t + 3500 + Math.random() * 5000; }
+    if (t > nextMeteor) { meteors.push({x: Math.random() * w * 0.8, y: Math.random() * h * 0.3, life: 0}); nextMeteor = t + 12000 + Math.random() * 10000; }
     meteors = meteors.filter(m => ++m.life < 40);
     for (const m of meteors) for (let k = 0; k < 7; k++) { ctx.globalAlpha = (1 - k / 7) * (1 - m.life / 40); px(m.x + m.life * 2 - k, m.y + m.life - k / 2, '#ffffff'); }
     ctx.globalAlpha = 1;
 
-    if (t > nextAlien && aliens.length < 3) { spawnAlien(); nextAlien = t + 4000 + Math.random() * 6000; }
+    if (t > nextAlien && aliens.length < 1) { spawnAlien(); nextAlien = t + 15000 + Math.random() * 15000; }
     aliens = aliens.filter(a => a.x > -20 && a.x < w + 20);
     for (const a of aliens) {
       a.x += a.dir * a.sp;

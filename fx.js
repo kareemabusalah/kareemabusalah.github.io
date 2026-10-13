@@ -189,58 +189,6 @@
     }, { passive: true });
   });
 
-  // 8 + 9. Click Spark (React Bits <ClickSpark>) + Pixel Trail (React Bits <PixelTrail>), one canvas
-  fx('sparks', function () {
-    if (reduced) return; // ponytail: sparks off under reduced motion (spec allows "minimal or off")
-    var cv, cx, dpr, parts = [], raf = 0, lastCell = '';
-    function ensure() {
-      if (cv) return true;
-      cv = document.createElement('canvas'); cx = cv.getContext('2d');
-      if (!cx) return false;
-      cv.className = 'fx-sparks'; cv.setAttribute('aria-hidden', 'true');
-      document.body.appendChild(cv); size();
-      addEventListener('resize', size);
-      return true;
-    }
-    function size() {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      cv.width = innerWidth * dpr; cv.height = innerHeight * dpr;
-      cx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
-    function loop(t) {
-      cx.clearRect(0, 0, cv.width, cv.height);
-      cx.fillStyle = G;
-      parts = parts.filter(function (p) {
-        var a = (t - p.t0) / p.life;
-        if (a >= 1) return false;
-        var e = 1 - Math.pow(1 - a, 2);
-        cx.globalAlpha = (1 - a) * p.o;
-        cx.fillRect(Math.round(p.x + p.vx * e) - p.s / 2, Math.round(p.y + p.vy * e) - p.s / 2, p.s, p.s);
-        return true;
-      });
-      cx.globalAlpha = 1;
-      raf = parts.length ? requestAnimationFrame(loop) : 0;
-    }
-    function add(p) { parts.push(p); if (!raf) raf = requestAnimationFrame(loop); }
-    document.addEventListener('click', function (e) {
-      if (!e.clientX && !e.clientY) return; // keyboard-generated click
-      if (!ensure()) return;
-      var t0 = performance.now();
-      for (var i = 0; i < 8; i++) {
-        var a = i * Math.PI / 4, d = 26 + Math.random() * 10;
-        add({ x: e.clientX, y: e.clientY, vx: Math.cos(a) * d, vy: Math.sin(a) * d, s: 4 + ((Math.random() * 3) | 0), t0: t0, life: 420, o: 1 });
-      }
-    });
-    if (!fine) return;
-    addEventListener('pointermove', function (e) {
-      if (e.pointerType !== 'mouse') return;
-      var gx = Math.floor(e.clientX / 8) * 8, gy = Math.floor(e.clientY / 8) * 8, key = gx + ',' + gy;
-      if (key === lastCell || parts.length > 60 || !ensure()) return;
-      lastCell = key;
-      add({ x: gx + 4, y: gy + 4, vx: 0, vy: 0, s: 8, t0: performance.now(), life: 400, o: 0.45 });
-    }, { passive: true });
-  });
-
   // 10. Pixel Transition (React Bits <PixelTransition>) - block cover between pages
   fx('transition', function () {
     document.documentElement.classList.add('fx-on'); // drop the CSS pre-paint cover
