@@ -169,12 +169,6 @@ html.calm .stars,html.calm .hint{display:none}
 /* Rotating Text (React Bits) in the home headline */
 .rot{color:var(--sun);display:inline-block}.rot.flip{animation:flip .36s steps(4)}
 @keyframes flip{from{transform:translateY(-70%);opacity:0}to{transform:none;opacity:1}}
-/* Star Border (React Bits): a comet of light runs around every button */
-@property --sb{syntax:'<angle>';inherits:false;initial-value:0deg}
-.btn{position:relative;isolation:isolate}
-.btn.o{background:var(--panel)}
-.btn::before{content:"";position:absolute;inset:-3px;z-index:-1;background:conic-gradient(from var(--sb),transparent 0 72%,var(--pink) 82%,#fff 87%,var(--sun) 92%,transparent 100%);animation:sb 3.2s linear infinite}
-@keyframes sb{to{--sb:360deg}}
 /* nav extras: animations toggle and the alien counter */
 .hint{pointer-events:none;z-index:40;--hc:#ffd23f}
 .hint svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
