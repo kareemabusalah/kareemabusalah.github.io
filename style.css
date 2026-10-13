@@ -151,6 +151,7 @@ output{color:var(--g)}
 .yt iframe{width:100%;aspect-ratio:16/9;border:0;display:block}
 .phs{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:22px;margin-bottom:46px;align-items:start}
 .ph{display:block;border:3px solid var(--g);box-shadow:8px 8px 0 var(--dim)}.ph img{width:100%;display:block}
+.mosaic{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:var(--g)}.mosaic a{display:block}.mosaic img{aspect-ratio:1;object-fit:cover;height:100%}.mosaic .cap{grid-column:1/-1}
 .ph .cap{display:block;padding:8px 12px;font:9px var(--px);color:var(--g);background:#05040f;text-decoration:none}
 .bandlinks{margin:18px 0 40px}
 .subtabs{display:flex;gap:6px;margin:-6px 0 26px}.subtabs a{font:10px var(--px);color:var(--dim);text-decoration:none;padding:8px 9px;border:2px solid var(--dim)}.subtabs a[aria-current]{color:#000;background:var(--g);border-color:var(--g)}
