@@ -44,9 +44,7 @@ section{padding:0 0 80px}
 .hero{position:relative;overflow:hidden;border-bottom:3px solid var(--line)}
 .hero>.wrap{position:relative;z-index:1}
 .home{display:grid;grid-template-columns:1.5fr 1fr;gap:48px;align-items:center;padding:72px 0 36px}
-.cpn dt{font:9px var(--px);color:var(--g);margin-top:20px;letter-spacing:.1em}
-.cpn dt::before{content:"> "}
-.cpn dd{max-width:680px;margin-top:4px}
+.intro p{max-width:680px;margin-top:16px}
 .portrait{border:3px solid var(--g);box-shadow:8px 8px 0 var(--dim);background:#000}
 .portrait img{width:100%;display:block;aspect-ratio:1;object-fit:cover}
 .portrait figcaption{font:9px var(--px);color:var(--g);padding:10px;border-top:3px solid var(--g)}
