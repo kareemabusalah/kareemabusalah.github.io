@@ -178,6 +178,8 @@ html.calm .stars,html.calm .hint{display:none}
 .hint.drawable.drawn path{stroke-dashoffset:0}
 .hint-note{position:absolute;white-space:nowrap;font:700 26px/1 "Caveat",cursive;color:var(--hc);transform:rotate(-4deg);text-shadow:2px 2px 0 #05040f}
 .hint.drawable .hint-note{opacity:0;transition:opacity .4s .5s}.hint.drawable.drawn .hint-note{opacity:1}
+.hint.tiny .hint-note{font-size:17px}.hint.tiny path{stroke-width:1.8}
+.hint.away{opacity:0;transition:opacity .25s}
 .hand{font:700 26px/1.2 "Caveat",cursive;color:var(--pink);transform:rotate(-2deg);display:inline-block;margin-top:22px}
 .hand::before{content:"→ ";color:var(--sun)}
 @media(max-width:820px){.hint{display:none}}
