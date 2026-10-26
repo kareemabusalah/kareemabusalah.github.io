@@ -22,7 +22,7 @@ if (typeof document !== 'undefined') {
   const $ = id => document.getElementById(id);
   const css = (v, d) => getComputedStyle(document.documentElement).getPropertyValue(v).trim() || d;
   const G = css('--g', '#7ee8ff'), PINK = css('--pink', '#ff6ad5'), SUN = css('--sun', '#ffd23f'),
-        LINE = css('--line', '#2a2560'), DIM = css('--dim', '#7a72d6'), TXT = css('--txt', '#e6e8ff');
+        LINE = css('--line', '#2a2560'), DIM = css('--dim', '#7a72d6'), TXT = css('--txt', '#e6e8ff'), BG = css('--bg', '#05040f');
   const pen = cv => { const cx = cv.getContext('2d'); cx.font = '8px "Press Start 2P", monospace'; cx.imageSmoothingEnabled = false; return cx; };
 
   if ($('sweep')) {
@@ -66,7 +66,7 @@ if (typeof document !== 'undefined') {
       // cross-section, gap exaggerated about 6000x so a thousandth of an inch reads
       const R = 52, gap = c / 0.008 * 22, cy = H / 2 - 6;
       cx.fillStyle = DIM; cx.beginPath(); cx.arc(68, cy, R + 12, 0, 7); cx.fill();
-      cx.fillStyle = '#05040f'; cx.beginPath(); cx.arc(68, cy, R, 0, 7); cx.fill();
+      cx.fillStyle = BG; cx.beginPath(); cx.arc(68, cy, R, 0, 7); cx.fill();
       cx.fillStyle = c < 0.001 ? PINK : G; cx.beginPath(); cx.arc(68, cy, R - gap, 0, 7); cx.fill();
       cx.fillStyle = TXT; cx.textAlign = 'center'; cx.fillText('HOLE + PEG', 68, H - 10);
       // clearance axis with the worst-case band and the measured print

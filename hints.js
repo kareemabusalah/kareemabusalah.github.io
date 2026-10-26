@@ -31,7 +31,6 @@
     const box = document.createElement('div');
     box.className = 'hint';
     box.setAttribute('aria-hidden', 'true');
-    box.style.setProperty('--hc', ['#ffd23f', '#ff6ad5', '#7ee8ff'][i % 3]);
     const svg = document.createElementNS(NS, 'svg');
     const ring = document.createElementNS(NS, 'path'), arr = document.createElementNS(NS, 'path');
     svg.append(ring, arr);

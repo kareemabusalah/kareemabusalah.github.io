@@ -8,7 +8,7 @@ document.querySelectorAll('.v3d').forEach(box => {
   const canvas = box.querySelector('canvas');
   const renderer = new THREE.WebGLRenderer({canvas, antialias: false});
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x05040f);
+  scene.background = new THREE.Color(0xefede8);
   const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 1e6);
   const controls = new OrbitControls(camera, canvas);
   controls.enableDamping = true;
@@ -43,7 +43,7 @@ document.querySelectorAll('.v3d').forEach(box => {
       if (!o.isMesh) return;
       o.geometry.computeVertexNormals();
       o.material.flatShading = true;
-      o.add(new THREE.LineSegments(new THREE.EdgesGeometry(o.geometry, 25), new THREE.LineBasicMaterial({color: 0x7ee8ff})));
+      o.add(new THREE.LineSegments(new THREE.EdgesGeometry(o.geometry, 25), new THREE.LineBasicMaterial({color: 0x161616})));
     });
     const b = new THREE.Box3().setFromObject(model), c = b.getCenter(new THREE.Vector3()), r = b.getSize(new THREE.Vector3()).length() / 2;
     model.position.sub(c);

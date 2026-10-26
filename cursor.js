@@ -1,4 +1,4 @@
-// Interactive cursor: a pixel ship that follows the mouse, banks with movement, leaves exhaust,
+// Interactive cursor: an ink rocket that follows the mouse, banks with movement, leaves exhaust,
 // locks targeting brackets onto anything clickable (React Bits "Target Cursor"), and fires on click.
 // Mouse only; touch screens keep their normal behavior.
 (() => {
@@ -48,14 +48,14 @@
     const vx = x - px, vy = y - py;
     px = x; py = y;
     tilt += ((calm ? 0 : Math.max(-28, Math.min(28, vx * 1.6))) - tilt) * 0.25;
-    ship.style.transform = `translate(${x - 3}px,${y - 3}px) rotate(${tilt.toFixed(1)}deg)`;
+    ship.style.transform = `translate(${x - 4}px,${y - 4}px) rotate(${tilt.toFixed(1)}deg)`;
 
     // exhaust from the tail (down-right of the tip) when moving
     const speed = Math.hypot(vx, vy);
     if (!calm && shown && speed > 2) {
       for (let i = 0; i < Math.min(1, speed / 10); i++) {
         parts.push({x: x + 18 + Math.random() * 4, y: y + 22 + Math.random() * 4, vx: -vx * 0.05 + Math.random() - 0.3,
-                    vy: -vy * 0.05 + Math.random() * 0.8, life: 1, c: Math.random() < 0.5 ? '#ffd23f' : '#ff7a1a'});
+                    vy: -vy * 0.05 + Math.random() * 0.8, life: 1, c: Math.random() < 0.5 ? '#161616' : '#8a857c'});
       }
     }
     ctx.clearRect(0, 0, cv.width, cv.height);
@@ -72,9 +72,9 @@
     for (const s of shots) {
       const k = (now - s.t) / 280;
       ctx.globalAlpha = 1 - k;
-      ctx.fillStyle = '#7ee8ff';
+      ctx.fillStyle = '#161616';
       for (let i = 0; i < 8; i++) ctx.fillRect(Math.round(s.x - i * 5 * (1 + k * 3)), Math.round(s.y - i * 5 * (1 + k * 3)), 3, 3);
-      ctx.fillStyle = '#ff6ad5';
+      ctx.fillStyle = '#8a857c';
       for (let i = 0; i < 12; i++) { const a = i / 12 * Math.PI * 2, r = 4 + k * 22; ctx.fillRect(Math.round(s.x + Math.cos(a) * r), Math.round(s.y + Math.sin(a) * r), 3, 3); }
     }
     ctx.globalAlpha = 1;
