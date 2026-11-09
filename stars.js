@@ -74,7 +74,7 @@
 
   let w, h, dpr, stars = [], aliens = [], pops = [], meteors = [], nextAlien = 6000, nextMeteor = 8000;
   const seed = () => {
-    dpr = Math.min(devicePixelRatio || 1, 2);
+    dpr = Math.min(devicePixelRatio || 1, 1.5);
     w = innerWidth; h = innerHeight;
     cv.width = w * dpr; cv.height = h * dpr;
     stars = Array.from({length: Math.round(w * h / 11000)}, () => {
@@ -182,7 +182,8 @@
   });
 
   let raf = 0;
-  const tick = t => { draw(t); raf = requestAnimationFrame(tick); };
+  let last = 0;  // ponytail: ~30fps is plenty for doodles drifting by
+  const tick = t => { if (t - last > 32) { last = t; draw(t); } raf = requestAnimationFrame(tick); };
   seed();
   addEventListener('resize', () => { seed(); if (calm) draw(0); });
   if (calm) { draw(0); addEventListener('scroll', () => draw(0), {passive: true}); }

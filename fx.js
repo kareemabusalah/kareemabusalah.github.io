@@ -189,68 +189,7 @@
     }, { passive: true });
   });
 
-  // 10. Pixel Transition (React Bits <PixelTransition>) - block cover between pages
-  fx('transition', function () {
-    document.documentElement.classList.add('fx-on'); // drop the CSS pre-paint cover
-    if (reduced) return;
-    var B = 40, cv, cx, cells, raf = 0, timers = [];
-    function build() {
-      cv = document.createElement('canvas'); cx = cv.getContext('2d');
-      if (!cx) { cv = null; return false; }
-      cv.className = 'fx-cover'; cv.setAttribute('aria-hidden', 'true');
-      cv.width = Math.ceil(innerWidth / B); cv.height = Math.ceil(innerHeight / B); // 1 px per block, CSS scales up
-      cv.style.imageRendering = 'pixelated';
-      cells = [];
-      for (var i = 0; i < cv.width * cv.height; i++) cells.push(Math.random() * 300);
-      document.documentElement.appendChild(cv);
-      return true;
-    }
-    function kill() {
-      cancelAnimationFrame(raf); raf = 0;
-      timers.forEach(clearTimeout); timers = [];
-      if (cv && cv.parentNode) cv.parentNode.removeChild(cv);
-      cv = null;
-    }
-    // dir 1: fill (cover), dir -1: clear (dissolve). Cells near their switch time flash green.
-    function play(dir) {
-      var t0 = performance.now();
-      (function draw(t) {
-        if (!cv) return;
-        var e = t - t0, W = cv.width;
-        cx.clearRect(0, 0, W, cv.height);
-        for (var i = 0; i < cells.length; i++) {
-          var d = dir > 0 ? e - cells[i] : cells[i] - e;
-          if (dir > 0 ? d < 0 : d < -60) continue;
-          cx.fillStyle = Math.abs(d) < 60 ? G : BG;
-          cx.fillRect(i % W, (i / W) | 0, 1, 1);
-        }
-        if (e < 360) raf = requestAnimationFrame(draw);
-        else if (dir < 0) kill();
-      })(t0);
-    }
-    // page load: start covered, dissolve; fail-safe removes it no matter what
-    if (build()) {
-      cx.fillStyle = BG; cx.fillRect(0, 0, cv.width, cv.height);
-      play(-1); timers.push(setTimeout(kill, 1000));
-    }
-    addEventListener('pageshow', function (e) { if (e.persisted) kill(); });
-    document.addEventListener('click', function (e) {
-      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-      var a = e.target.closest && e.target.closest('a[href]');
-      if (!a || a.hasAttribute('download') || (a.target && a.target !== '_self')) return;
-      if (a.getAttribute('href').charAt(0) === '#') return;
-      var u = new URL(a.href, location.href);
-      if (u.protocol !== location.protocol || u.host !== location.host) return;
-      if (/\.pdf$/i.test(u.pathname) || !/(\.html?|\/)$/i.test(u.pathname)) return;
-      if (u.pathname === location.pathname && u.search === location.search) return; // same page / #hash
-      e.preventDefault();
-      kill();
-      if (!build()) { location.href = u.href; return; }
-      play(1);
-      timers.push(setTimeout(function () { location.href = u.href; }, 340));
-      timers.push(setTimeout(kill, 3000)); // fail-safe if navigation never happens
-    });
-  });
+  // ponytail: page-transition cover removed, it delayed every load and click
 
   // 11. Konami code -> 1UP toast + green flicker
   fx('konami', function () {

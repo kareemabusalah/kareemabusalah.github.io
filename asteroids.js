@@ -263,13 +263,13 @@
 .ast-log{list-style:none;margin:0;padding:.4em .8em;text-align:left;font-size:clamp(15px,1.8vw,20px);line-height:1.2;background:#0d0b24;border:2px solid #5b54a8}
 .ast-log a{color:#7ee8ff;margin-left:.4em}
 .ast-log .ast-unk{color:#5a6a8a}
-.ast-toasts{max-width:calc(70vh * 1.6);margin:10px auto 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px;min-height:72px}  /* below the screen, never over the play area */
-.ast-toast{pointer-events:auto;display:flex;gap:8px;align-items:flex-start;background:#0d0b24;border:2px solid #7ee8ff;box-shadow:3px 3px 0 #05040f;padding:6px 8px;font-size:17px;line-height:1.1;transition:opacity .4s,transform .4s}
+.ast-toasts{max-width:calc(70vh * 1.6);margin:10px auto 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px;min-height:72px}  /* below the screen, never over the play area */
+.ast-toast{pointer-events:auto;display:flex;gap:8px;align-items:flex-start;background:#0d0b24;border:2px solid #7ee8ff;box-shadow:3px 3px 0 #05040f;padding:10px 12px;font-size:22px;line-height:1.15;transition:opacity .4s,transform .4s}
 .ast-toast.ast-out{opacity:0;transform:translateX(20px)}
-.ast-toast small{display:block;margin-bottom:3px;font:8px/1.3 "Press Start 2P",monospace;color:#7ee8ff}
-.ast-toast img{flex:none;width:46px;height:46px;object-fit:cover;border:1px solid #5b54a8}
-.ast-toast .ast-m{color:#ffd23f;font-size:20px}
-.ast-toast a{display:inline-block;margin-top:4px;font:8px "Press Start 2P",monospace;color:#7ee8ff}
+.ast-toast small{display:block;margin-bottom:3px;font:11px/1.4 "Press Start 2P",monospace;color:#7ee8ff}
+.ast-toast img{flex:none;width:72px;height:72px;object-fit:cover;border:1px solid #5b54a8}
+.ast-toast b{color:#fff;font-weight:normal}.ast-toast .ast-m{color:#ffd23f;font-size:26px}
+.ast-toast a{display:inline-block;margin-top:6px;font:11px "Press Start 2P",monospace;color:#7ee8ff}
 .ast-toast.ast-skill{border-color:#8b5cf6}.ast-toast.ast-skill small{color:#b79bff}
 .ast-toast.ast-band{border-color:#ffd23f}.ast-toast.ast-band small{color:#ffd23f}
 .ast-touch{position:absolute;left:0;right:0;bottom:8px;z-index:3;display:flex;justify-content:space-between;padding:0 8px;pointer-events:none}
@@ -632,18 +632,18 @@
     for (const s of stars) { g.fillStyle = s.c; g.fillRect(s.x | 0, s.y | 0, s.z > 0.5 ? 2 : 1, s.z > 0.5 ? 2 : 1); }
 
     for (const r of rocks) drawRot(r.img, r.x, r.y, r.a);
-    for (const r of rocks) if (r.tier === 0) { const n = PROJ[r.pi].n; text(n, Math.round(r.x - textW(n) / 2), Math.round(r.y - r.r - 9), '#7ee8ff'); }
+    for (const r of rocks) if (r.tier === 0) { const n = PROJ[r.pi].n; text(n, Math.round(r.x - textW(n, 2) / 2), Math.round(r.y - r.r - 13), '#7ee8ff', 2); }
 
     for (const p of pows) {
       if (p.l < 3 && (p.l * 8 | 0) % 2) continue;
       drawRot(CAPS, p.x, p.y);
       const s = p.skill.slice(0, 12);
-      text(s, Math.round(p.x - textW(s) / 2), Math.round(p.y - 11), '#b79bff');
+      text(s, Math.round(p.x - textW(s, 2) / 2), Math.round(p.y - 17), '#b79bff', 2);
     }
     if (ufo) {
       drawRot(BASS, ufo.x, ufo.y, 0, ufo.vx < 0);
       const s = ufo.band.slice(0, 14);
-      text(s, Math.round(ufo.x - textW(s) / 2), Math.round(ufo.y + 8), '#ffd23f');
+      text(s, Math.round(ufo.x - textW(s, 2) / 2), Math.round(ufo.y + 9), '#ffd23f', 2);
     }
     for (const n of notes) drawRot(NOTE, n.x, n.y);
 
